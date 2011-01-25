@@ -23,6 +23,14 @@ html {
     width: 670px;
 }
 
+.smallShot {
+    border: 0 none;
+}
+
+.icon {
+    border: 0 none;
+}
+
 .top_image {
     border: 0 none;
     width: 725px;
@@ -102,7 +110,11 @@ html {
 }
 
 .screenshot_container {
-    text-align: center;
+    text-align: left;
+}
+
+.icons_container {
+    margin: 10px 0px 10px 0px;
 }
 
 .caption {

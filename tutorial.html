@@ -5,6 +5,60 @@ title: Tutorial
 
 <h2>Tutorial</h2>
 <div class="description">
-    <p>Here you can get information on the usage of the ARCH Network Editor. 
-    </p>
+    <p>Here you can get information on the usage of the ARCH Network Editor.<br /><br />The tutorial gives an overview of the editor capabilities, guiding you through the steps of creating a network, defining elements characteristics, submit the network to simulation and review the results.<br /><br />Let's start by launching the application. The main window should appear on the screen.
+    <div class="screenshot_container">
+            <img class="screenshot" src="media/mainWindow.png" alt="Starting screen">
+    </div>
+You see the toolbar on the top, some other tool buttons on the left and the editing area (the light gray dotted portion) in the middle of the screen.<br />The status bar at the bottom of the screen provides messages on the application status (now it says 'Ready') and also useful hints about the functionalities of the tools when the mouse is on any icon. All the functionalities displayed on the screen can also be accessed from the menu bar at the top of the screen.<br /><br />Selecting the green 'PLUS' icon (addSegment tool) on top of the left buttons allows you to create new edges of the network. Just click in the editor area, drag and release.
+    <div class="screenshot_container">
+            <img class="screenshot" src="media/firstEdgeCreation.png" alt="First edge">
+    </div>
+The showGrid and snapToGrid options are activated by default. If you don't like them, just deselect the corresponding icons in the toolbar.
+    <div class="icons_container">
+            <img class="icon" src="media/grid.png" alt="First edge">
+            <img class="icon" src="media/snapToGrid.png" alt="First edge">
+    </div>
+You can add other edges by clicking, dragging and releasing.<br />
+     <div class="screenshot_container">
+            <img class="screenshot" src="media/otherEdgesCreation.png" alt="Other edges">
+    </div>
+Clicking on a node when the mouse-cursor is close to it (the node is yellow-highlighted), makes the edge to start on that node, sharing the node with the other edge.
+    <div class="screenshot_container">
+            <img class="screenshot" src="media/connectedEdges.png" alt="Connected edges">
+    </div>
+The same applyies on mouse release: releasing the mouse when the cursor is close to a node (again, yellow-highlighted), connects the edge the edges owning the node.
+    <div class="screenshot_container">
+            <img class="screenshot" src="media/moreConnections.png" alt="More connections">
+    </div>
+After all this work, it's time to save our network. Click on the 'DISK' icon in the toolbar, insert the name (example) and the location (ARCH Network Editor tutorial: ANE_tutorial folder) you want the network to be saved and that's it!
+    <div class="screenshot_container">
+            <img class="screenshot" src="media/exampleSaved.png" alt="Example has been saved">
+    </div>
+Let's have a look at the files the application has saved. 
+    <div class="screenshot_container">
+            <img class="smallShot" src="media/exampleFolder.png" alt="Files in the folder">
+    </div>
+There is an example_graph.xml file and an example_layout.xml file. The first (_graph.xml) has all the information about how nodes and edges are connected, while the second (_layout.xml) stores the graphical appearance of the network.<br />
+This two files (and also the _mesh.xml file that we will see later) should always stay in the same folder to allow the application to work with them.<br />Going back to our example, click on an edge and drag to make it to become curved. 
+    <div class="screenshot_container">
+            <img class="screenshot" src="media/curvedEdge.png" alt="The edge is curved now">
+    </div>
+This is useful when you have an intricated network and you want to see something which is beyond one edge.<br /><br />If you select the red 'CROSS' icon (removeSegment tool) below the addSegment icon, you can remove edges form the network.
+    <div class="screenshot_container">
+            <img class="screenshot" src="media/edgeRemoved.png" alt="The edge has been removed">
+    </div>
+UNDO - REDO functionalities are provided in order to recover if any mistake has been done.<br />The slitSegment tool (scissors icon) splits edges in two, dividing them at their middle point. If the edge is too short, the splitting cannot be done.
+    <div class="screenshot_container">
+            <img class="screenshot" src="media/splitEdge.png" alt="The edge has been split">
+    </div>
+The selectElement tool allows to select elements of the network.
+    <div class="screenshot_container">
+            <img class="screenshot" src="media/selectedElements.png" alt="Elements have been selected">
+    </div>
+If you click on selected items, you can move them.
+    <div class="screenshot_container">
+            <img class="screenshot" src="media/movedElements.png" alt="The edge has been split">
+    </div>
+</p>
+    
 </div>
