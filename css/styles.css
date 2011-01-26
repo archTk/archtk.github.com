@@ -87,6 +87,8 @@ html {
     background-color: #6ECF36;
     background-image: -moz-linear-gradient(center top, #6ECF36 0%, #4E9326 100%);
     background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0.00, #6ECF36), color-stop(1.00, #4E9326));
+    filter:  progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#6ECF36', endColorstr='#4E9326'); /* IE6 & IE7 */
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#6ECF36', endColorstr='#4E9326')"; /* IE8 */
     color: white;
     font-weight: normal;
     margin: 0 10px 0 10px;
