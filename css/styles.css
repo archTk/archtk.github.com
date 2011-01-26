@@ -4,8 +4,8 @@ body {
 
 h2 {
     width: 705px;
-    border-bottom: 3px solid #0E3F54;
-    color: #043042;
+    border-bottom: 3px solid #3D5C7A;
+    color: #3D5C7A;
     font-size: 20px;
     margin: 30px 10px 0px 10px;
     _margin: 30px 5px 0px 5px;
@@ -16,6 +16,25 @@ html {
     font-family: Helvetica,sans-serif;
     padding-top: 10px;
     width: 100%;
+}
+
+.header_container {
+    background-color: #3D5C7A;
+}
+
+.header {
+    color: #FFFFFF;
+    font-family: Helvetica,sans-serif;
+    font-size: 60px;
+    text-decoration: none;
+}
+
+.header p {
+    margin-left: 10px;
+}
+
+.header a:link {
+    text-decoration: none;
 }
 
 .screenshot {
@@ -123,19 +142,19 @@ html {
     font-size: 12px;
 }
 
-#footer_container {
+.footer_container {
     background-color: #EFEFEF;
     text-align: center;
     padding-top: 15px;
 }
 
-#footer {
+.footer {
     margin-top: 20px;
 	color: #666;
     font-size: 14px;
 }
 
-#footer a:link, #footer a:visited {
+.footer a:link, .footer a:visited {
 	color: #666;
     text-decoration: none;
 }
