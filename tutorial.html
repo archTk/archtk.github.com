@@ -46,7 +46,7 @@ This is useful when you have an intricated network and you want to see something
     <div class="screenshot_container">
             <img class="screenshot" src="media/edgeRemoved.png" alt="The edge has been removed">
     </div>
-UNDO - REDO functionalities are provided in order to recover if any mistake has been done.<br />The slitSegment tool (<b>'SCISSORS'</b> icon) splits edges in two, dividing them at their middle point. If the edge is too short, the splitting cannot be done.
+UNDO - REDO functionalities are provided in order to recover if any mistake has been done. They are accessible using the standard keyboard shortcuts or through the Edit menu.<br />The splitSegment tool (<b>'SCISSORS'</b> icon) splits edges in two, dividing them at their middle point. If the edge is too short, the splitting cannot be done.
     <div class="screenshot_container">
             <img class="screenshot" src="media/splitEdge.png" alt="The edge has been split">
     </div>
@@ -115,6 +115,11 @@ The network cannot be seen in its completeness, thus use <b>'TRANSLATE'</b> or <
     <div class="screenshot_container">
             <img class="screenshot" src="media/networkTranslated.png" alt="Network all visible">
     </div>
+Clicking on the <b>'DEFAULT MESH'</b> icon applies a default 3-elements mesh to every edge of the network. Mesh elements are displayed as green circles with a letter corresponding to the type of mesh element. The default mesh element is the 0D_FiveDofsV2, represented using the number 5.
+    <div class="screenshot_container">
+            <img class="screenshot" src="media/defaultMesh.png" alt="default mesh">
+    </div>
+In order to choose a different type of mesh element to be used, you have to explicitly define it in the network. To do that, perform an UNDO action to return to the netwrok without the mesh and, using the information tool, insert the type of element you want to use.<b>
 </p>   
 </div>
 
