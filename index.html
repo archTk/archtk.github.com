@@ -1,9 +1,58 @@
 ---
-layout: default
+layout: main
 title: Home
 ---
 
+
 <h2>Welcome</h2>
 <div class="description">
-    <p>The archTk is an open-source toolkit developed in the context of the ARCH FP7 project. It is currently composed of the ARCH Network Editor and the pyNS solver.<br /><br />It allows the creation of model-based patient-specific vascular networks to be used for blood flow simulations. Simulations are carried out with the pyNS solver, which, beyond running the simulations, provides network meshing capabilities.<br />Elements characteristics, simulation parameters and boundary conditions can be easily defined before performing the simulations.<br />Simulation results are then displayed.</p>
+  <p>The archTk is an open-source toolkit developed in the context of the ARCH FP7 project. It is currently composed of the ARCH Network Editor and the pyNS solver.<br />
+  <div class="screenshot_container">
+            <img class="screenshot" width="200" src="media/welcome.png" alt="archTK">
+        </div>
+  It allows the creation of model-based patient-specific vascular networks to be used for blood flow simulations. Simulations are carried out with the <b>pyNS</b> solver, a tool for a detailed analysis of the pressure and flow wave propagation in vascular networks using 0D/1D models. Beyond running the simulations, pyNS provides network meshing capabilities.<br />Elements characteristics, simulation parameters and boundary conditions can be easily defined before performing the simulations, thanks to the <b>ARCH Network Editor</b> graphical user interface.<br />Simulation results are then displayed.<br /></p>
+</div>
+<h2>Features</h2>							
+<div class="description_2">
+	<p><h3>Input Files</h3></p>
+    <p>Simple <a href="#" target="_blank">input files</a> to easily build vascular networks</p>
+    <p>Xml file and its <a href="#" target="_blank">xsd schema</a> for specifying vascular network topology and properties, <a href="#" target="_blank">boundary conditions</a> and <a href="#" target="_blank">patient specific data</a></p>
+   
+    <p>Default <a href="#" target="_blank">generic networks</a> and <a href="#" target="_blank">patient-specific model generation</a></p>
+    <p>Xml files for some <a href="#" target="_blank">default generic vascular networks</a></p>
+    <p>Automatic <a href="#" target="_blank">generation of a patient specific network</a> from a generic one</p>
+    
+	<p><h3>Properties and parameters as expressions</h3></p>
+	
+    <p>Possibility to specify any vascular network property or any boundary condition parameter
+with an <a href="#" target="_blank">equation</a> which will be evaluated by pyNS</p>
+    <ul>
+    <li>Specific python class <a href="#" target="_blank">(Evaluator)</a> for evaluating linear and non linear
+equations using <a href="#" target="_blank">regular expressions</a> specified into xml input files.
+    <li>Example: $Compliance[cephalic_lower] =(($RadiusAtRest[cephalic_lower]**2*pi)*(4.4/((1066.6+$Pressure[cephalic_lower])**2)))
+    </ul>
+    <p><a href="#" target="_blank">Object-oriented approach design</a>, which allows to abstracts the concept of element from the numerical solver itself</p>
+    <ul>
+    <li>Different existing types of <a href="#" target="_blank">0D/1D elements</a>
+    <li>Easy way to <a href="#" target="_blank">implements new elements</a>
+    </ul>
+    <p><a href="#" target="_blank">Mesh generation</a> and <a href="#" target="_blank">automatic mapping of degrees of freedom</a> from a local to a global environment</p>
+    <ul>
+    <li>Different mesh generation strategies
+    <li>A specific class, named dofmap, maps each local degree of freedom into a global degree of
+freedom, handling connectivity between elements of the network.
+    </ul>
+    <p><a href="#" target="_blank">Numerical solver</a> for linear and non linear simulations</p>
+    <ul>
+    <li><a href="#" target="_blank">Assembler class</a> stores a copy of linear global matrices built excluding local matrices of non linear
+elements, for improving performances during non linear simulations.
+    <li><a href="#" target="_blank">Pre run simulation strategy</a> for setting operating point.
+    <li><a href="#" target="_blank">Non linear convergence method</a>
+    </ul>
+    <p><a href="#" target="_blank">Post processing features</a> for pressures, flows, wall shear stresses and other characteristics
+    graphical plots</p>
+    <ul>
+    <li>Text files with flow, pressure or wall shear stress signal of each mesh
+    <li>Wall shear stress can be computed with the <a href="#" target="_blank">Inverse Womersley method</a>
+    </ul>
 </div>
