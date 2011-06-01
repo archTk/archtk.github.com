@@ -3,56 +3,89 @@ layout: main
 title: Home
 ---
 
-
-<h2>Welcome</h2>
+<h1>Welcome</h1>
 <div class="description">
-  <p>The archTk is an open-source toolkit developed in the context of the ARCH FP7 project. It is currently composed of the ARCH Network Editor and the pyNS solver.<br />
-  <div class="screenshot_container">
-            <img class="screenshot" width="200" src="media/welcome.png" alt="archTK">
-        </div>
-  It allows the creation of model-based patient-specific vascular networks to be used for blood flow simulations. Simulations are carried out with the <b>pyNS</b> solver, a tool for a detailed analysis of the pressure and flow wave propagation in vascular networks using 0D/1D models. Beyond running the simulations, pyNS provides network meshing capabilities.<br />Elements characteristics, simulation parameters and boundary conditions can be easily defined before performing the simulations, thanks to the <b>ARCH Network Editor</b> graphical user interface.<br />Simulation results are then displayed.<br /></p>
+  <p>The archTk is an open-source toolkit developed in the context of the ARCH FP7 project. It is currently composed of the <a href="#" target="_blank">ARCH Network Editor</a> and the <a href="#" target="_blank">pyNS</a> solver.<br />
+  <div class="attachment_container">
+    <a href="media/welcome_big.png" rel="lightbox" title="archTk"><img class="screenshot" width="150" src="media/welcome.png" alt="archTk"/></a>
+   </div>
+  
+It allows the creation of model-based patient-specific vascular networks to be used for blood flow simulations. Simulations are carried out with the <b>pyNS</b> solver, a tool for a detailed analysis of the pressure and flow wave propagation in vascular networks using 0D/1D models. Beyond running the simulations, pyNS provides network meshing capabilities.<br />Elements characteristics, simulation parameters and boundary conditions can be easily defined before performing the simulations, thanks to the <b>ARCH Network Editor</b> graphical user interface.<br />Simulation results are then displayed.</p>
 </div>
-<h2>Features</h2>							
+
+<h2>Input Files</h2>							
 <div class="description_2">
-	<p><h3>Input Files</h3></p>
-    <p>Simple <a href="#" target="_blank">input files</a> to easily build vascular networks</p>
-    <p>Xml file and its <a href="#" target="_blank">xsd schema</a> for specifying vascular network topology and properties, <a href="#" target="_blank">boundary conditions</a> and <a href="#" target="_blank">patient specific data</a></p>
+<div class="attachment_container">
+	<a href="media/pat_spec.png" rel="lightbox" title="Patient specific customization"><img class="screenshot" width="150" src="media/pat_spec.png" alt="Patient specific customization"/></a>
+</div>
+    <p>Simple <a href="#" target="_blank">input files</a> to easily build vascular networks.</p>
+    <p>Xml files and their <a href="#" target="_blank">xsd schemas</a> for specifying vascular network topology and properties, <a href="#" target="_blank">boundary conditions</a> and <a href="#" target="_blank">patient specific data.</a></p>
+    <p>Default <a href="#" target="_blank">generic networks</a> and <a href="#" target="_blank">patient-specific model generation.</a></p>
+    <p>Xml files for some <a href="#" target="_blank">default generic vascular networks.</a></p>
+    <p>Automatic <a href="#" target="_blank">generation of a patient specific network</a> from a generic one using <a href="#" target="_blank">pyNS ModelAdaptor.</a></p>
+</div>
    
-    <p>Default <a href="#" target="_blank">generic networks</a> and <a href="#" target="_blank">patient-specific model generation</a></p>
-    <p>Xml files for some <a href="#" target="_blank">default generic vascular networks</a></p>
-    <p>Automatic <a href="#" target="_blank">generation of a patient specific network</a> from a generic one</p>
+<h2>Basic graphical user interface functions</h2>
+<div class="description_2">
+<div class="attachment_container">
+<iframe title="video name" class="video" type="text/html"  width="220" height="155" src="http://www.youtube.com/embed/W-Q7RMpINVo" frameborder="0" allowFullScreen></iframe>	
+</div>
+<p><a href="#" target="_blank">Basic GUI functionalities</a> as for example zooming and translating the scene, displaying a grid on the workspace and undoing or redoing last actions are supported.</p>
+<p>archTk lets you <a href="#" target="_blank">create and manage networks</a> by simply adding, splitting, removing or combining edges and their nodes.</p>
+</div>
     
-	<p><h3>Properties and parameters as expressions</h3></p>
+<h2>Properties and parameters as expressions</h2>	
+<div class="description_2">
+	<div class="attachment_container">
+	  <a href="media/xml_equation.png" rel="lightbox" title="Xml Expressions Example"><img class="big_snippet" src="media/expression.png" alt="Example_Expression"/></a>
+    </div>
+    <p>Possibility to specify any vascular network property or any boundary condition parameter with an <a href="#" target="_blank">equation</a> which will be evaluated by pyNS.</p>
+	<p>Specific python class <a href="#" target="_blank">(Evaluator)</a> for evaluating linear and non linear equations using <a href="#" target="_blank">regular expressions</a> specified into xml input files.<p> 
+</div>
+
+<h2>Object-oriented architecture</h2>	
+<div class="description_2">
+<div class="attachment_container">
+	<a href="media/wp_wk_els.png" rel="lightbox" title="Wave Propagation element and Windkessel element"><img class="left_snippet" src="media/wp_wk_els.png" alt="Wave propagation element and windkessel element"/></a>
+	<a href="media/pyNS_blocks.png" rel="lightbox" title="pyNS Architecture"><img class="screenshot" width="150" src="media/pyNS_blocks.png" alt="pyNS Architecture"/></a>
+</div>
+    <p><a href="#" target="_blank">Object-oriented approach</a> design that models the system as a group of interacting objects which allows to abstracts the concept of element from the numerical solver itself. Each object represents some entity of interest in the system being modeled, and is characterised by its class, its state, and its behavior.</p>
+    <p>Different existing types of <a href="#" target="_blank">0D/1D elements</a> with constant properties and with linear or nonlinear expressions. Easy way to <a href="#" target="_blank">implement new elements</a> into pyNS architecture.</p>
 	
-    <p>Possibility to specify any vascular network property or any boundary condition parameter
-with an <a href="#" target="_blank">equation</a> which will be evaluated by pyNS</p>
-    <ul>
-    <li>Specific python class <a href="#" target="_blank">(Evaluator)</a> for evaluating linear and non linear
-equations using <a href="#" target="_blank">regular expressions</a> specified into xml input files.
-    <li>Example: $Compliance[cephalic_lower] =(($RadiusAtRest[cephalic_lower]**2*pi)*(4.4/((1066.6+$Pressure[cephalic_lower])**2)))
-    </ul>
-    <p><a href="#" target="_blank">Object-oriented approach design</a>, which allows to abstracts the concept of element from the numerical solver itself</p>
-    <ul>
-    <li>Different existing types of <a href="#" target="_blank">0D/1D elements</a>
-    <li>Easy way to <a href="#" target="_blank">implements new elements</a>
-    </ul>
-    <p><a href="#" target="_blank">Mesh generation</a> and <a href="#" target="_blank">automatic mapping of degrees of freedom</a> from a local to a global environment</p>
-    <ul>
-    <li>Different mesh generation strategies
-    <li>A specific class, named dofmap, maps each local degree of freedom into a global degree of
-freedom, handling connectivity between elements of the network.
-    </ul>
-    <p><a href="#" target="_blank">Numerical solver</a> for linear and non linear simulations</p>
-    <ul>
-    <li><a href="#" target="_blank">Assembler class</a> stores a copy of linear global matrices built excluding local matrices of non linear
-elements, for improving performances during non linear simulations.
-    <li><a href="#" target="_blank">Pre run simulation strategy</a> for setting operating point.
-    <li><a href="#" target="_blank">Non linear convergence method</a>
-    </ul>
-    <p><a href="#" target="_blank">Post processing features</a> for pressures, flows, wall shear stresses and other characteristics
-    graphical plots</p>
-    <ul>
-    <li>Text files with flow, pressure or wall shear stress signal of each mesh
-    <li>Wall shear stress can be computed with the <a href="#" target="_blank">Inverse Womersley method</a>
-    </ul>
+</div>    
+
+<h2>Mesh Generation</h2>	
+<div class="description_2">
+<div class="attachment_container">
+	<a href="media/meshing.png" rel="lightbox" title="archTk meshing"><img class="screenshot" width="150" src="media/meshing.png" alt="archTk meshing"/></a>
+</div>
+<p><a href="#" target="_blank">Mesh generation</a> and <a href="#" target="_blank">automatic mapping of degrees of freedom</a> from a local to a global environment</p>
+<p>Different mesh generation strategies.</p>
+<p>A specific class, named <a href="#" target="_blank">dofmap</a>, maps each local degree of freedom into a global degree of freedom, handling connectivity between elements of the network.</p>
+</div> 
+     
+<h2>Numerical solver</h2>	
+<div class="description_2">	
+	<div class="attachment_container">
+	  <a href="media/numerical_scheme.png" rel="lightbox" title="Numerical scheme"><img class="right_snippet" src="media/numerical_scheme.png" alt="Numerical scheme"/></a>
+    </div>  
+<p><a href="#" target="_blank">Numerical solver</a> for linear and non linear simulations.</p>
+<p><a href="#" target="_blank">Assembler class</a> stores a copy of linear global matrices built excluding local matrices of non linear elements, for improving performances during non linear simulations.</p>
+<p><a href="#" target="_blank">Pre run simulation strategy</a> for setting operating point.</p>
+<p><a href="#" target="_blank">Non linear convergence method.</a></p>
+</div>
+
+<h2>Post processing</h2>	
+<div class="description_2">
+<div class="attachment_container">
+	<a href="media/flow.png" rel="lightbox" title="Post Processing, flow plot"><img class="screenshot" width="150" src="media/flow.png" alt="Post processing"/></a>
+</div>	
+<p><a href="#" target="_blank">Post processing features</a> for pressures, flows, wall shear stresses and other characteristics.</p>
+<p><a href="#" target="_blank">Post processing graphical features</a> for plotting diagrams.</p>
+<p><a href="#" target="_blank">Text files</a> with flow, pressure or wall shear stress signal of each mesh.
+<p>Wall shear stress can be computed with the <a href="#" target="_blank">Inverse Womersley method</a>.</p>
+</div>    
+
+<div class="pre_footer"></div
+    
 </div>
