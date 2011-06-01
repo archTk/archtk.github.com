@@ -29,6 +29,20 @@ h2 {
     text-shadow: 1px 1px 0 white;
 }
 
+h3 {
+    color: #3D5C7A;
+	width: 705px;
+    border-bottom: 3px solid #3D5C7A;
+    font-family: Georgia,"Times New Roman",Times,serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: lighter;
+    line-height: 29px;
+    margin: 15px 10px 0px 10px;
+    text-shadow: 1px 1px 0 white;
+}
+
+
 html {
     background-color: #E5E5E5;
     font-family:Lucida Grande,Lucida Sans Unicode,Arial,Verdana,sans-serif;
@@ -184,6 +198,10 @@ html {
 }
 
 .description_2 p {
+    margin: 0px auto 0px auto;
+}
+
+.description_2 ul {
     margin: 0px auto 0px auto;
 }
 

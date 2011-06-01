@@ -3,7 +3,67 @@ layout: main
 title: Installation
 ---
 
-<h2 id="download"> Installation</h2>
+<h1>Installation</h1>
 <div class="description">
-    <p>To install the ARCH Network Editor, <a href="download.html">download</a> the application and the pyNS solver from the repositories hosted at github.<br /><br />Once you have done, double click on the application icon to start using it.</p>
+    <p>To install the ARCH Network Editor, first <a href="download.html">download</a> the arch Network Editor and the pyNS solver from the repositories hosted at github.</p>
+	<p>archTk is cross-platform and will compile and work on Linux, Mac OSX and Windows.<p>
+</div>
+
+<h2>Compiling from source</h2>
+<h3>archNE Requirements</h3>
+<div class="description_2">
+    <p>In order to successfully compile and use arch Network Editor, the following software has to be installed in your system:</p>
+	<ul>
+		<li><a href="http://qt.nokia.com/downloads/downloads#qt-lib" title="Qt libraries">Qt libraries(4.x)</a></li>
+	</ul>
+</div>
+
+<h3>archNE Installation</h3>
+<div class="description_2">
+	<ul>
+    <li><p><a href="download.html">Download</a> and untar (or unzip) the latest archNE source release from <a href="https://github.com/archTk/arch-ne.html">github</a>:</p>
+ 	<p>tar -zxvf archTk-arch-ne-0.x.tar.gz</p>
+	<p>or</p>
+	<p>unzip archTk-arch-ne-0.x.zip</p></li>
+	<li><p>rename the source directory into archNE:</p>
+	<p>mv archTk-arch-ne-0.x/source/ archTk-arch-ne-0.x/archNE/</p> 
+	</li>
+	<li><p>cd into archNE directory and create the qt file project:</p>
+	<p>cd archTk-arch-ne-0.x/archNE</p> 
+	<p>qmake -project</p> 
+	</li>
+	<li><p>Edit the qt file project (archNE.pro) with a text editor adding these two lines just before #Input tag:</p>
+	<p>QT += xmlpatterns</p> 
+	<p>QT += xml</p> 
+	</li>
+	<li><p>Create a build directory and cd into it:</p>
+	<p>mkdir ../archNE-build</p>
+	<p>cd ../archNE-build</p>
+	</li>
+	<li><p>Run qmake with the right option to set the corresponding platform-specific variable:</p>
+	<p><strong>MacOsX:</strong> qmake -spec macx-g++ ../archNE</p>
+	<p><strong>Windows:</strong> qmake -spec win32 ../archNE</p>
+	<p><strong>Linux:</strong> qmake -spec unix ../archNE</p>
+	</li>
+	<div class="attachment_container">
+		<a href="media/archNE_pref.png" rel="lightbox" title="archNE set Preferences"><img class="screenshot" width="150" src="media/archNE_pref.png" alt="archNE set Preferences"/></a>
+	</div>
+	<li><p>Compile and install arch Network Editor:</p>
+	<p>make</p>
+	</li>
+	<li><p>Run archNe by clicking on archNe.app file</p>
+	<p>Select archNE -> Preferences from menuBar and set python path and pyNS path</p>
+	</li>
+	</ul>
+</div>
+
+
+<h3>pyNS Requirements</h3>
+<div class="description_2">
+    <p>In order to successfully compile and use pyNS, the following software has to be installed in your system:</p>
+	<ul>
+		<li><a href="http://www.python.org/download/" title="Python">Python(2.x)</a></li>
+		<li><a href="http://www.scipy.org/Download" title="Numpy package">Numpy package</a></li>
+		<li><a href="http://matplotlib.sourceforge.net/" title="Matplotlib library">Matplotlib library</a></li>
+	</ul>
 </div>
