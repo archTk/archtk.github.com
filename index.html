@@ -25,6 +25,17 @@ It allows the creation of model-based patient-specific vascular networks to be u
     <p>Automatic <a href="#" target="_blank">generation of a patient specific network</a> from a generic one using <a href="#" target="_blank">pyNS ModelAdaptor.</a></p>
 </div>
    
+<h2>Files management: Loading, saving and importing</h2>	
+<div class="description_2">
+	<div class="attachment_container">
+	  <a href="media/graph.png" rel="lightbox" title="Network graph xml file"><img class="left_snippet" src="media/graph_icon.png" alt="Network graph xml file"/></a>
+	  <a href="media/layout.png" rel="lightbox" title="Network layout xml file"><img class="right_snippet" src="media/layout_icon.png" alt="Network layout xml file"/></a>
+    </div>
+    <p><a href="#" target="_blank">Simulation physical parameters</a> and <a href="#" target="_blank">boundary conditions</a> can be saved in xml files with specific format giving the possibility to importing them.</p>
+	<p><a href="#" target="_blank">Network topological information</a> is stored separately from <a href="#" target="_blank">network graphical information</a> in xml files with specific format.<p>
+	<p>archTk lets you <a href="#" target="_blank">load an already existing 2D representation of a vascular network</a> or <a href="#" target="_blank">an existing network with only the topological information.</a><p> 
+</div>
+    
 <h2>Basic graphical user interface functions</h2>
 <div class="description_2">
 <div class="attachment_container">
@@ -33,7 +44,7 @@ It allows the creation of model-based patient-specific vascular networks to be u
 <p><a href="#" target="_blank">Basic GUI functionalities</a> as for example zooming and translating the scene, displaying a grid on the workspace and undoing or redoing last actions are supported.</p>
 <p>archTk lets you <a href="#" target="_blank">create and manage networks</a> by simply adding, splitting, removing or combining edges and their nodes.</p>
 </div>
-    
+	
 <h2>Properties and parameters as expressions</h2>	
 <div class="description_2">
 	<div class="attachment_container">
@@ -51,17 +62,27 @@ It allows the creation of model-based patient-specific vascular networks to be u
 </div>
     <p><a href="#" target="_blank">Object-oriented approach</a> design that models the system as a group of interacting objects which allows to abstracts the concept of element from the numerical solver itself. Each object represents some entity of interest in the system being modeled, and is characterised by its class, its state, and its behavior.</p>
     <p>Different existing types of <a href="#" target="_blank">0D/1D elements</a> with constant properties and with linear or nonlinear expressions. Easy way to <a href="#" target="_blank">implement new elements</a> into pyNS architecture.</p>
-	
-</div>    
+</div>   
 
-<h2>Mesh Generation</h2>	
+<h2>Editing GUI for vascular network characteristics and parameters</h2>	
+<div class="description_2">
+	<div class="attachment_container">
+	  <a href="media/editingGUI.png" rel="lightbox" title="archTk editing Gui"><img class="screenshot" width="150" src="media/editingGUI.png" alt="archTk editing Gui"/></a>
+    </div>
+    <p>archTK provides an <a href="#" target="_blank">editing GUI</a>, related to specific file format, for specifying and editing boundary conditions, simulation physical parameters and the characteristics of the vascular network elements.</p>
+	<p>User can edit any element information or boundary condition parameter and archTk saves information.</p>
+</div>
+ 
+<h2>Meshing features</h2>	
 <div class="description_2">
 <div class="attachment_container">
 	<a href="media/meshing.png" rel="lightbox" title="archTk meshing"><img class="screenshot" width="150" src="media/meshing.png" alt="archTk meshing"/></a>
 </div>
-<p><a href="#" target="_blank">Mesh generation</a> and <a href="#" target="_blank">automatic mapping of degrees of freedom</a> from a local to a global environment</p>
-<p>Different mesh generation strategies.</p>
-<p>A specific class, named <a href="#" target="_blank">dofmap</a>, maps each local degree of freedom into a global degree of freedom, handling connectivity between elements of the network.</p>
+
+<p>archTk lets you <a href="#" target="_blank">create a mesh</a> for the vascular network using <a href="#" target="_blank">default mesh generator</a> or <a href="#" target="_blank">pyNS mesh generator.</a> User has the possibility to <a href="#" target="_blank">load an existing mesh</a> of the vascular network previously saved in a xml file with specific format.</p>
+<p></p>
+<p><a href="#" target="_blank">pyNS mesh generator provides different mesh generation strategies</a> and an <a href="#" target="_blank">automatic mapping of degrees of freedom</a> from a local to a global environment.</p>
+<p>A specific pyNS class, named <a href="#" target="_blank">dofmap</a>, maps each local degree of freedom into a global degree of freedom, handling connectivity between elements of the network.</p>
 </div> 
      
 <h2>Numerical solver</h2>	
@@ -73,6 +94,14 @@ It allows the creation of model-based patient-specific vascular networks to be u
 <p><a href="#" target="_blank">Assembler class</a> stores a copy of linear global matrices built excluding local matrices of non linear elements, for improving performances during non linear simulations.</p>
 <p><a href="#" target="_blank">Pre run simulation strategy</a> for setting operating point.</p>
 <p><a href="#" target="_blank">Non linear convergence method.</a></p>
+</div>
+
+<h2>Simulation</h2>	
+<div class="description_2">	
+	<div class="attachment_container">
+	 <iframe title="video name" class="video" type="text/html"  width="220" height="155" src="http://www.youtube.com/embed/W-Q7RMpINVo" frameborder="0" allowFullScreen></iframe>	
+    </div>  
+<p>archTk lets you perform a <a href="#" target="_blank">simulation</a> using pyNS solver, retrieving <a href="#" target="_blank">information on the simulation status</a> and visualizing <a href="#" target="_blank">simulation results</a> generated by pyNS.</p>
 </div>
 
 <h2>Post processing</h2>	
@@ -88,4 +117,4 @@ It allows the creation of model-based patient-specific vascular networks to be u
 
 <div class="pre_footer"></div
     
-</div>
+></div>
