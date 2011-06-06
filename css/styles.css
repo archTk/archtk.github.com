@@ -42,6 +42,19 @@ h3 {
     text-shadow: 1px 1px 0 white;
 }
 
+h4 {
+    color: #3D5C7A;
+	width: 705px;
+    border-bottom: 3px solid #3D5C7A;
+    font-family: Georgia,"Times New Roman",Times,serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: lighter;
+    line-height: 29px;
+    margin: 15px 10px 0px 10px;
+    text-shadow: 1px 1px 0 white;
+}
+
 
 html {
     background-color: #E5E5E5;
@@ -51,11 +64,7 @@ html {
 
 /* Header */
 .header_container {
-    background-color: #3C6996;
-	background-image: -moz-linear-gradient(center top, #3C6996 0%, #3D5C7A 100%);
-    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(1.00, #3D5C7A), color-stop(0.00, #3C6996));
-    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#3C6996', endColorstr='#3D5C7A'); /* IE6 & IE7 */
-    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#3C6996', endColorstr='#3D5C7A')"; /* IE8 */
+background-image: url(../media/header.jpg);
 }
 
 .header_menu_container{
@@ -101,10 +110,19 @@ html {
 	margin: auto auto auto 20px;
 }
 
+.small_left_screenshot {
+	width: 100px;
+    border: 0 none;
+	clear: right;
+	float: left;
+	margin: auto 20px auto auto;
+}
+
+
 .logo {
     border: 0 none;
 	width: 150px;
-	margin: 25px 80px 5px 5px;
+	margin: 25px 90px 5px 5px;
 }
 
 .big_snippet {
@@ -119,7 +137,19 @@ html {
 	border-right:1px solid #000000;
 }
 
-.right_snippet {
+.medium_snippet {
+    border: 0 none;
+    width: 170px;
+	clear: right;
+	float: right;
+	margin: 10px auto auto 20px;
+	border-bottom:1px solid #000000;
+	border-top:1px solid #000000;
+	border-left:1px solid #000000;
+	border-right:1px solid #000000;
+}
+
+.snippet {
     border: 0 none;
     width: 150px;
 	clear: right;
@@ -216,11 +246,7 @@ html {
 
 
 .footer_container {
-    background-color: #3D5C7A;
-    background-image: -moz-linear-gradient(center top, #3D5C7A 10%, #3C6996 100%);
-    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0.00, #3D5C7A), color-stop(1.00, #3C6996));
-    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#3D5C7A', endColorstr='#3C6996'); /* IE6 & IE7 */
-    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#3D5C7A', endColorstr='#3C6996')"; /* IE8 */
+    background-image:url(../media/footer.jpg);
 	width: 100%;
 	text-align: center;
 	display: block;
@@ -228,9 +254,10 @@ html {
 }
 
 .footer {
-	width: 725px;
+	width: 800px;
 	height: 150px;
 	padding-top:15px;
+	padding-left: 100px;
 	display: block;
     clear: both;
 	text-align: center;

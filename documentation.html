@@ -5,22 +5,149 @@ title: Documentation
 
 <h1>Documentation</h1>
 <div class="description">
-  <p>archTK documentation is composed by <a href="/tutorials.html" target="_blank" title="video Tutorials">archTk video tutorials</a>, <a href="/usecases.html" target="_blank" title="use cases">archTK usecases</a>, pyNS architecture, pyNS how-to guidelines, pyNS development examples, regex building for xml equations and archNE documentation.</p>
+  <p>archTK documentation is composed by <a href="/tutorials.html" target="_blank" title="video Tutorials">archTk video tutorials</a>, <a href="/usecases.html" target="_blank" title="use cases">archTK usecases</a>, <a href="#pyNS_architecture">pyNS architecture</a>, <a href="#pyNS_how-to">pyNS how-to guidelines</a>, <a href="#pyNS_examples">pyNS development examples</a>, <a href="#regex">regex building for xml equations</a> and <a href="#archNE_documentation">archNE documentation.</a></p>
 </div>
 <div class="button_container">
 	<a class="button" href="/tutorials.html"target="_blank" onclick="this.blur();"><span>Video tutorials</span></a> 
 	<a class="button" href="/usecases.html"target="_blank" onclick="this.blur();"><span>Use cases</span></a> 
 </div>
   
-<h2>pyNS architecture</h2>
+<h2><a name="pyNS_architecture">pyNS architecture</a></h2>
+<h3>Background</h3>
 
-<h2>pyNS how-to</h2>
+<div class="description_2">
+<p>The python Network Solver (pyNS), is a software developed in Python with numpy package, needed for scientific computing with Python, with the aim to simulate hemodynamic behavior in vascular networks. pyNS is developed in the Department of Bioengineering, at Mario Negri Institute (MNI) with support from the EC FP7/2007-2013: ARCH, Project n. 224390.</p>
+<p>In the contest of the Arch Project, the aim of the application is to simulate hemodynamic changes induced by AVF surgery and long-term vascular and cardiac adaptation and to predict AVF function for improvement of surgical planning and AVF management. Verification of model prediction of AVF maturation, patency, onset of steal syndrome and cardiac overload will be performed on the basis of prospective observational studies in HD patients.</p>
+</div>
 
-<h2>pyNS examples</h2>
+<h3>Product Perspective</h3>
+<div class="description_2">
+<div class="attachment_container">
+	<a href="media/pyNS_overall.png" rel="lightbox" title="Major components of the overall system and subsystem interconnections."><img class="screenshot" width="150" src="media/pyNS_overall.png" alt="pyNS Architecture"/></a>
+</div>
+<p>pyNS has been designed with an object-oriented approach, which allows to abstracts the concept of element from the numerical solver itself.</p>
+<p>All the components developed are open-source and pyNS can simply be installed and run on all platforms. It only needs <a href="http://www.python.org/download/" target="_blank" title="Python">Python(2.x)</a>, <a href="http://www.scipy.org/Download" target="_blank" title="Numpy package">Numpy package</a> and <a href="http://matplotlib.sourceforge.net/" target="_blank" title="Matplotlib library">Matplotlib library</a>. Matplotlib is a python 2D plotting library, which produces publication quality figures in a variety of hardcopy formats and interactive environments across platforms. </p>
+<p>pyNS currently supports <a href="#elements">elements</a> with constant properties and with linear or nonlinear expressions. <a href="#evaluator">Evaluator class</a>, using <a href="#regex">regular expressions</a>, computes values from expressions setting them into elements.</p>
+<p>The <a href="#input">input data</a> for the solver will be an XML file modeling the <a href="#vascular_network">vascular network</a> and an XML file with <a href="#parameters">simulation parameters</a> and <a href="#boundary_conditions">boundary conditions.</a> <a href="#patient_data">Patient specific data</a> can be easily imported using .csv files. <a href="#model_adaptor">Model Adaptor class</a> takes as input <a href="#patient_specific">patient specific information</a> (.csv) and creates specific vascular network model from generic one and specific input provided. <a href="#mesh_generation">The mesh generation process</a> creates elements from vascular network depending of maximum length parameter or maximum radius variation. User can decide which strategy to use.</p>
+<p>pyNS will provide <a href="#numerical_solver">methods for numerical integration</a> and <a href="#non_linear_convergence">non linear convergence strategies.</a></p>
+<p><a href="#post_processing">Post-processing</a> features allow to visualize hemodynamic information (flow, pressure, wall shear stress...) for each element of the network. Information could be in a numeric and/or graphic (.png format) way.</p>
+</div>
 
-<h2>Regular expression for xml equations</h2>
+<h3><a name="input">Input files</a></h3>
+<div class="description_2">
+<p>The input data for the solver is an XML file modeling the <a href="#vascular_network">vascular network</a> and an XML file with <a href="#parameters">simulation parameters</a> and <a href="#boundary_conditions">boundary conditions.</a></p>
+</div>
 
-<h2>archNE documentation</h2>
+<h4><a name="vascular_network">The vascular network</a></h4>
+<div class="description_2">
+<div class="attachment_container">
+<img class="left_snippet" src="media/vascular_network.png" alt="Vascular network graph"/>
+</div>
+<p>The XML schema of the vascular network has been created by using named types. We chose to use <em>element</em> to express information in a structured form (if an element id directly derived from an other or to take into account the possibility of extending an element content to carry more information); otherwise, to provide additional information about an element, we use one or more <em>attributes</em>. We described the Vascular Network as a graph, composed by case, nodes, edges and superedges. These elements allow defining the network topology. The first element declared (root element) is called Network Graph. Case, nodes, edges and superedges are the leaf elements; each of this is identified with a unique ID. The parameters involved in the model are given with information about unit, accuracy and source of measurement.</p>
+<p>Case element provides some general information about the dataset (subject Id and protocol visit).</p>
+<p>Superedges element, identified by an integer <em>id</em> and a <em>name</em>, represents a group of edges or a group of other superedges. For example, superedge <em>arm</em> can be composed by <em>brachial artery</em>, <em>radial artery</em>... superedges. Each of them is a group of edges. Superedge can be very useful when user has to assign the same parameter (or boundary condition) to many edges of the network.</p>
+</div>
+<div class="description_2">
+<p>
+<div class="attachment_container">
+<img class="left_snippet" src="media/nodes.png" alt="Edge elements"/>
+</div>
+<div class="attachment_container">
+<img class="snippet" src="media/edges.png" alt="Edge elements"/>
+</div>
+Each node of the vascular network is identified by an unique <em>id</em> and can be classified with a <em>type</em> attribute and with a <em>name</em>. User can specify some properties related to each node, depending of its classification. For example, if a node is classified as <em>anastomosis</em>, properties are related to resistance expressions to model the pressure drop over this element. A node can be classified as <em>anastomosis</em>, <em>bifurcation</em>, <em>inflow</em>, <em>outflow</em> or <em>downstream network</em>.<br/>
+Each edge of the vascular network is identified by an unique <em>id</em>, a <em>couple of nodes</em>, a <em>name</em> and a <em>side</em> attributes which represents if edge is belonging to arterial or venous side. User can decide to specify the type of the elements generated from this edge during the <a href="#mesh_generation">mesh generation</a> process. Each edge is composed by geometry, properties and features elements. Geometry is used for specifying characteristics such as the <em>length</em> of the edge or for providing its xyz <em>spatial coordinates</em>. An edge can have one or more properties related to its radius, distensibility, wall thickness, young's modulus, specific resistance and specific compliance. If specific information are available each property can be expressed as an array of values in several locations; each value is identified by a curvilinear abscissa <em>s</em>, which can assume values from 0 to 1. <br />
+It is possible to have physiological or pathological <em>features</em> (e.g., kink, stenosis, other...). Each of these conditions is identified by a curvilinear abscissa <em>s</em> and by a parameter of interest (e.g., radius and curvature for kink, radius and length for stenosis).
+</p>
+</div>
+
+<h4><a name="boundary_conditions">Boundary Conditions</a></h4>
+<div class="description_2">
+<div class="attachment_container">
+<img class="snippet" src="media/boundary_conditions.png" alt="Boundary conditions graph"/>
+</div>
+<p>The boundary conditions model is described as a graph, composed by different types of boundary conditions. Each boundary condition is identified by an integer <em>id</em>, a <em>type</em> and a <em>name</em>.  Each type of boundary condition is specified with its own characteristically parameters and entities associated to it. Each entity represents a group of meshes with the same type of boundary condition and is identified with a unique <em>id</em> which is related to <a href="#vascular_network">vascular network superedge's name</a> and, if needed, also with a <em>node id</em> related to <a href="#vascular_network">vascular network nodes.</a><br />
+Characteristically parameters can be related to prescribed external pressures (e.g. element's transmural pressures), inflow's parameters or outflow prescribed pressures. Transmural pressure can be expressed with scalar value or in an array form. If expressed in array form, transmural pressure is time-related; so each pressure is associated with its specific time value.</p>
+</div>
+
+<h4><a name="parameters">Simulation parameters</a> and <a name="patient_data">patient data</a></h4>
+<div class="description_2">
+<div class="attachment_container">
+<img class="medium_snippet" src="media/specific_dataset.png" alt="Patient data and parameters"/>
+</div>
+<p>Simulation parameters and patient data provide additional information for patient-specific <a href="#simulation">simulation.</a> </p>
+<p>Simulation parameters graph is composed by a list of variables and each of them is expressed with a scalar value. By default, <em>blood density</em> (1050 kg/m<small><sup>3</small></sup>), <em>poisson ratio</em> (0.5), <em>timestep</em> (0.001 s) and <em>total number of simulation cycles</em> (10) are defined.</p>
+<p>Patient data graph contains a sequence of patient personal data. Each element can be expressed by a scalar value or with an <a href="#regex">expression</a> which will be <a href="#evaluator">evaluated</a> by pyNS. User can provide patient-specific information about date of birth, date of surgery, age, gender, arm (left or right), fistula type, height (cm) and weight (kg), systolic and diastolic pressures (mmHg), mean value of cardiac output (mL/min), cardiac period (s), information about brachial, radial and ulnar mean flows (mL/min) from US measurements, blood analysis data (plasma protein concentration (cp, g/dL) and hematocrit (ht, %)), blood viscosity (Pa*s) and information about pathological problems such as diabetes (yes/no) and hypertension (yes/no).</p>
+</div>
+
+<h3><a name="generic_network">From a generic network template</a> to a <a name="patient_specific">patient-specific network</a></h3>
+<div class="description_2">
+<div class="attachment_container">
+	<a href="media/csv.png" rel="lightbox" title="Example of csv file for patient specific customization"><img class="small_left_screenshot" width="150" src="media/csv.png" alt="Example of csv file for patient specific customization"/></a>
+</div>
+<div class="attachment_container">
+	<a href="media/pat_spec.png" rel="lightbox" title="Patient specific customization workflow"><img class="screenshot" width="150" src="media/pat_spec.png" alt="Patient specific customization workflow"/></a>
+</div>
+<p>pyNS allows to generate a patient-specific network from some default generic templates, giving user the possibility to specify only some basic patient information. Vascular network geometry and properties, boundary conditions and simulation parameters are computed according to <a href="#regex">generic rules defined as expressions</a> in generic templates xml files.</p>
+<p>This process can be executed either by <a href="#">archNE customization</a> or pyNS. To run customization from pyNS user has to pass a .csv file with a list of parameters and their values to <a name="model_adaptor">ModelAdaptor class</a>.</p>
+<p>A short how-to for building a patient-specific .csv file can be found in the <a href="#csv_file">pyNS how-to section</a>.</p>
+</div>
+
+<h3><a name="evaluator">Evaluator class</a></h3>
+<div class="description_2">
+
+</div>
+
+<h3><a name="elements">Elements class</a></h3>
+<div class="description_2">
+
+</div>
+
+<h3><a name="mesh_generation">Mesh generation</a></h3>
+<div class="description_2">
+
+</div>
+
+<h3><a name="dofmap">From a local to a global environment</a></h3>
+<div class="description_2">
+
+</div>
+
+<h3><a name="numerical_solver">The numerical solver</a></h3>
+<div class="description_2">
+</div>
+
+<h4><a name="assembler">Assembler class</a></h4>
+<div class="description_2">
+</div>
+
+<h4><a name="non_linear_convergence">Non-linear convergence strategy</a></h4>
+<div class="description_2">
+</div>
+
+<h3><a name="post_processing">Post processing features</a></h3>
+<div class="description_2">
+</div>
+
+<h4><a name="post_processing_plots">Graphical plots</a></h4>
+<div class="description_2">
+</div>
+
+<h4><a name="post_processing_txt">Writing results in a text file</a></h4>
+<div class="description_2">
+</div>
+
+<h4><a name="inverse_womersley">The inverse womersley method for computing wall shear stress</a></h4>
+<div class="description_2">
+</div>
+
+<h2><a name="pyNS_how-to">pyNS how-to</a></h2>
+
+<h2><a name="pyNS_examples">pyNS examples</a></h2>
+
+<h2><a name="regex">Regular expression for xml equations</a></h2>
+
+<h2><a name="archNE_documentation">archNE documentation</a></h2>
 
 
 <div class="pre_footer"></div>

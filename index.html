@@ -5,7 +5,7 @@ title: Home
 
 <h1>Welcome</h1>
 <div class="description">
-  <p>The archTk is an open-source toolkit developed in the context of the ARCH FP7 project. It is currently composed of the <a href="#" target="_blank">ARCH Network Editor</a> and the <a href="#" target="_blank">pyNS</a> solver.</p>
+  <p>The archTk is an open-source toolkit developed in the context of the ARCH FP7 project. It is currently composed of the <a href="https://github.com/archTk/arch-ne" target="_blank">ARCH Network Editor</a> and the <a href="https://github.com/archTk/pyNS" target="_blank">pyNS</a> solver.</p>
   <div class="attachment_container">
     <a href="media/welcome_big.png" rel="lightbox" title="archTk"><img class="screenshot" width="150" src="media/welcome.png" alt="archTk"/></a>
    </div>
@@ -16,20 +16,20 @@ It allows the creation of model-based patient-specific vascular networks to be u
 <h2>Input Files</h2>							
 <div class="description_2">
 <div class="attachment_container">
-	<a href="media/pat_spec.png" rel="lightbox" title="Patient specific customization"><img class="screenshot" width="150" src="media/pat_spec.png" alt="Patient specific customization"/></a>
+	<a href="media/pat_spec.png" rel="lightbox" title="Patient specific customization workflow"><img class="screenshot" width="150" src="media/pat_spec.png" alt="Patient specific customization workflow"/></a>
 </div>
-    <p>Simple <a href="#" target="_blank">input files</a> to easily build vascular networks.</p>
-    <p>Xml files and their <a href="#" target="_blank">xsd schemas</a> for specifying vascular network topology and properties, <a href="#" target="_blank">boundary conditions</a> and <a href="#" target="_blank">patient specific data.</a></p>
-    <p>Default <a href="#" target="_blank">generic networks</a> and <a href="#" target="_blank">patient-specific model generation.</a></p>
-    <p>Xml files for some <a href="#" target="_blank">default generic vascular networks.</a></p>
-    <p>Automatic <a href="#" target="_blank">generation of a patient specific network</a> from a generic one using <a href="#" target="_blank">pyNS ModelAdaptor.</a></p>
+    <p>Simple <a href="/documentation.html#input">input files</a> to easily build vascular networks.</p>
+    <p>Xml files and their <a href="/documentation.html#vascular_network">xsd schemas</a> for specifying vascular network topology and properties, <a href="/documentation.html#boundary_conditions">boundary conditions</a> and <a href="/documentation.html#parameters">patient specific data.</a></p>
+    <p>Default <a href="/documentation.html#generic_network">generic networks</a> and <a href="/documentation.html#patient_specific">patient-specific model generation.</a></p>
+    <p>Xml files for some <a href="/documentation.html#generic_network">default generic vascular networks.</a></p>
+    <p>Automatic <a href="/documentation.html#patient_specific">generation of a patient specific network</a> from a generic one using <a href="/documentation.html#model_adaptor">pyNS ModelAdaptor.</a></p>
 </div>
    
 <h2>Files management: Loading, saving and importing</h2>	
 <div class="description_2">
 	<div class="attachment_container">
 	  <a href="media/graph.png" rel="lightbox" title="Network graph xml file"><img class="left_snippet" src="media/graph_icon.png" alt="Network graph xml file"/></a>
-	  <a href="media/layout.png" rel="lightbox" title="Network layout xml file"><img class="right_snippet" src="media/layout_icon.png" alt="Network layout xml file"/></a>
+	  <a href="media/layout.png" rel="lightbox" title="Network layout xml file"><img class="snippet" src="media/layout_icon.png" alt="Network layout xml file"/></a>
     </div>
     <p><a href="#" target="_blank">Simulation physical parameters</a> and <a href="#" target="_blank">boundary conditions</a> can be saved in xml files with specific format giving the possibility to importing them.</p>
 	<p><a href="#" target="_blank">Network topological information</a> is stored separately from <a href="#" target="_blank">network graphical information</a> in xml files with specific format.<p>
@@ -50,8 +50,8 @@ It allows the creation of model-based patient-specific vascular networks to be u
 	<div class="attachment_container">
 	  <a href="media/xml_equation.png" rel="lightbox" title="Xml Expressions Example"><img class="big_snippet" src="media/expression.png" alt="Example_Expression"/></a>
     </div>
-    <p>Possibility to specify any vascular network property or any boundary condition parameter with an <a href="#" target="_blank">equation</a> which will be evaluated by pyNS.</p>
-	<p>Specific python class <a href="#" target="_blank">(Evaluator)</a> for evaluating linear and non linear equations using <a href="#" target="_blank">regular expressions</a> specified into xml input files.<p> 
+    <p>Possibility to specify any vascular network property or any boundary condition parameter with an <a href="/documentation.html#regex">equation</a> which will be evaluated by pyNS.</p>
+	<p>Specific python class <a href="/documentation.html#evaluator">(Evaluator)</a> for evaluating linear and non linear equations using <a href="/documentation.html#regex">regular expressions</a> specified into xml input files.<p> 
 </div>
 
 <h2>Object-oriented architecture</h2>	
@@ -60,8 +60,8 @@ It allows the creation of model-based patient-specific vascular networks to be u
 	<a href="media/wp_wk_els.png" rel="lightbox" title="Wave Propagation element and Windkessel element"><img class="left_snippet" src="media/wp_wk_els.png" alt="Wave propagation element and windkessel element"/></a>
 	<a href="media/pyNS_blocks.png" rel="lightbox" title="pyNS Architecture"><img class="screenshot" width="150" src="media/pyNS_blocks.png" alt="pyNS Architecture"/></a>
 </div>
-    <p><a href="#" target="_blank">Object-oriented approach</a> design that models the system as a group of interacting objects which allows to abstracts the concept of element from the numerical solver itself. Each object represents some entity of interest in the system being modeled, and is characterised by its class, its state, and its behavior.</p>
-    <p>Different existing types of <a href="#" target="_blank">0D/1D elements</a> with constant properties and with linear or nonlinear expressions. Easy way to <a href="#" target="_blank">implement new elements</a> into pyNS architecture.</p>
+    <p><a href="/documentation.html#pyNS_architecture">Object-oriented approach</a> design that models the system as a group of interacting objects which allows to abstracts the concept of element from the numerical solver itself. Each object represents some entity of interest in the system being modeled, and is characterised by its class, its state, and its behavior.</p>
+    <p>Different existing types of <a href="/documentation.html#elements">0D/1D elements</a> with constant properties and with linear or nonlinear expressions. Easy way to <a href="#" target="_blank">implement new elements</a> into pyNS architecture.</p>
 </div>   
 
 <h2>Editing GUI for vascular network characteristics and parameters</h2>	
@@ -79,21 +79,21 @@ It allows the creation of model-based patient-specific vascular networks to be u
 	<a href="media/meshing.png" rel="lightbox" title="archTk meshing"><img class="screenshot" width="150" src="media/meshing.png" alt="archTk meshing"/></a>
 </div>
 
-<p>archTk lets you <a href="#" target="_blank">create a mesh</a> for the vascular network using <a href="#" target="_blank">default mesh generator</a> or <a href="#" target="_blank">pyNS mesh generator.</a> User has the possibility to <a href="#" target="_blank">load an existing mesh</a> of the vascular network previously saved in a xml file with specific format.</p>
+<p>archTk lets you <a href="#" target="_blank">create a mesh</a> for the vascular network using <a href="#" target="_blank">default mesh generator</a> or <a href="/documentation.html#mesh_generation">pyNS mesh generator.</a> User has the possibility to <a href="#" target="_blank">load an existing mesh</a> of the vascular network previously saved in a xml file with specific format.</p>
 <p></p>
-<p><a href="#" target="_blank">pyNS mesh generator provides different mesh generation strategies</a> and an <a href="#" target="_blank">automatic mapping of degrees of freedom</a> from a local to a global environment.</p>
-<p>A specific pyNS class, named <a href="#" target="_blank">dofmap</a>, maps each local degree of freedom into a global degree of freedom, handling connectivity between elements of the network.</p>
+<p><a href="/documentation.html#mesh_generation">pyNS mesh generator provides different mesh generation strategies</a> and an <a href="/documentation.html#dofmap">automatic mapping of degrees of freedom</a> from a local to a global environment.</p>
+<p>A specific pyNS class, named <a href="/documentation.html#dofmap">dofmap</a>, maps each local degree of freedom into a global degree of freedom, handling connectivity between elements of the network.</p>
 </div> 
      
 <h2>Numerical solver</h2>	
 <div class="description_2">	
 	<div class="attachment_container">
-	  <a href="media/numerical_scheme.png" rel="lightbox" title="Numerical scheme"><img class="right_snippet" src="media/numerical_scheme.png" alt="Numerical scheme"/></a>
+	  <a href="media/numerical_scheme.png" rel="lightbox" title="Numerical scheme"><img class="snippet" src="media/numerical_scheme.png" alt="Numerical scheme"/></a>
     </div>  
-<p><a href="#" target="_blank">Numerical solver</a> for linear and non linear simulations.</p>
-<p><a href="#" target="_blank">Assembler class</a> stores a copy of linear global matrices built excluding local matrices of non linear elements, for improving performances during non linear simulations.</p>
-<p><a href="#" target="_blank">Pre run simulation strategy</a> for setting operating point.</p>
-<p><a href="#" target="_blank">Non linear convergence method.</a></p>
+<p><a href="/documentation.html#numerical_solver">Numerical solver</a> for linear and non linear simulations.</p>
+<p><a href="/documentation.html#assembler">Assembler class</a> stores a copy of linear global matrices built excluding local matrices of non linear elements, for improving performances during non linear simulations.</p>
+<p><a href="/documentation.html#non_linear_convergence">Pre run simulation strategy</a> for setting operating point.</p>
+<p><a href="/documentation.html#non_linear_convergence">Non linear convergence method.</a></p>
 </div>
 
 <h2>Simulation</h2>	
@@ -109,10 +109,10 @@ It allows the creation of model-based patient-specific vascular networks to be u
 <div class="attachment_container">
 	<a href="media/flow.png" rel="lightbox" title="Post Processing, flow plot"><img class="screenshot" width="150" src="media/flow.png" alt="Post processing"/></a>
 </div>	
-<p><a href="#" target="_blank">Post processing features</a> for pressures, flows, wall shear stresses and other characteristics.</p>
-<p><a href="#" target="_blank">Post processing graphical features</a> for plotting diagrams.</p>
-<p><a href="#" target="_blank">Text files</a> with flow, pressure or wall shear stress signal of each mesh.
-<p>Wall shear stress can be computed with the <a href="#" target="_blank">Inverse Womersley method</a>.</p>
+<p><a href="/documentation.html#post_processing">Post processing features</a> for pressures, flows, wall shear stresses and other characteristics.</p>
+<p><a href="/documentation.html#post_processing_plots">Post processing graphical features</a> for plotting diagrams.</p>
+<p><a href="/documentation.html#post_processing_txt">Text files</a> with flow, pressure or wall shear stress signal of each mesh.
+<p>Wall shear stress can be computed with the <a href="/documentation.html#inverse_womersley">Inverse Womersley method</a>.</p>
 </div>    
 
 <div class="pre_footer"></div>
