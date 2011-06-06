@@ -244,7 +244,7 @@ html {
 
 /* Buttons */
 .button_container {
-	margin: 0px auto 0px auto;
+	margin: 0px auto 50px auto;
 	text-align: center;
 	width: 300px;
 }
