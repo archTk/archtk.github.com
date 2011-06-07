@@ -113,20 +113,50 @@ Characteristically parameters can be related to prescribed external pressures (e
 <div class="attachment_container">
 	<a href="media/wp_el.png" rel="lightbox" title="Wave propagation element"><img class="snippet" width="150" src="media/wp_el.png" alt="Wave propagation element"/></a>
 </div>
-<p>This element has been implemented with a 0D pulse wave propagation model as illustrated in <em>W.Huberts et al. A pulse wave propagation model to support decision-making in vascular access planning in the clinic, 2010</em>. The relations between pressure and flow for each vascular segment are derived from conservation of mass and momentum by assuming fully-developed incompressible Newtonian flow in a straight vessel. In the momentum equation the convection term, the axial diffusion term and the effect of body forces are neglected. The lumped parameter model obtained consists of a resistor per unit length R (representing the resistance to flow through the vessel) and an inductor per unit length L (representing the inertia of the blood) in series. To incorporate the storage capacity of the vessel in the model, a capacitor is added to each side of the vascular segment, representing half of the total vascular compliance over that segment. The leakage R<sub>L</sub> is captured by adding linear resistances (representing resistance to flow through small side-branches) in parallel to the capacitors. In addition, extravascular pressures p<sub>e</sub> are prescribed as a <a href="#boundary_conditions">boundary condition parameter.</a></p>
+<p>This element has been implemented with a 0D pulse wave propagation model as illustrated in <em>Huberts W. et al., A pulse wave propagation model to support decision-making in vascular access planning in the clinic, Med Eng and Physics, submitted.</em>. The relations between pressure and flow for each vascular segment are derived from conservation of mass and momentum by assuming fully-developed incompressible Newtonian flow in a straight vessel. In the momentum equation the convection term, the axial diffusion term and the effect of body forces are neglected. The lumped parameter model obtained consists of a resistor per unit length <em>R</em> (representing the resistance to flow through the vessel) and an inductor per unit length <em>L</em> (representing the inertia of the blood) in series. Both <em>R</em> and <em>L</em> also depend on Womersley number. To incorporate the storage capacity of the vessel in the model, a capacitor <em>C</em> is added to each side of the vascular segment, representing half of the total vascular compliance over that segment. The leakage <em>R<sub>L</sub></em> is captured by adding linear resistances (representing resistance to flow through small side-branches) in parallel to the capacitors. In addition, extravascular pressures <em>P<sub>e</sub></em> are prescribed as a <a href="#boundary_conditions">boundary condition parameter.</a></p>
 </div>
 
 <h4>Resistance element</h4>
 <div class="description_2">
+<div class="attachment_container">
+	<a href="media/r_el.png" rel="lightbox" title="Resistance element"><img class="snippet" width="150" src="media/r_el.png" alt="Resistance element"/></a>
+</div>
+<p>This element is a very simple 0D model realized with a resistance, which can be linear or not, between two nodes.</p>
+<p>Resistor <em>R</em> can be implemented as a variable resistance and its law will be described in the vascular network xml file according to the <a href="#regex">regular expression</a> structure for pyNS. User can decide to mesh each edge with this model simply assigning to the edge's <em>type</em> attribute the value <em>"Resistance"</em>.</p>
 </div>
 
 <h4>Anastomosis element</h4>
 <div class="description_2">
+<div class="attachment_container">
+	<a href="media/an_el.png" rel="lightbox" title="Anastomosis element"><img class="snippet" width="150" src="media/an_el.png" alt="Anastomosis element"/></a>
+</div>
+<p>This element is a 0D model realized with 2 resistor between 3 nodes.</p>
+<p>Anastomosis cannot be modeled by linear segments because the radial velocity component is no longer infinitesimally small compared to the axial velocity and flow separation can occur in this region. The velocity profile can thus not be based on fully developed flow in straight vessels. Consequently, a special element named Anastomosis, used as connection between an artery and a vein, is created to model the pressure losses over it.</p>
+<p>In order to evaluate the non-linear resistance associated to each anastomosis configuration, the pressure drop across the computational domain must be accurately evaluated by means of CFD computations. We model blood as a Newtonian fluid with constant properties so that the flow across the anastomosis is approximated numerically solving the incompressible Navier-Stokes equations. The simulations are performed with <a href="https://github.com/lorbot/Gnuid" target="_blank">the opensource hemodynamics solver Gnuid</a> while <a href="http://www.vmtk.org/vmtk" target="_blank">vmtk</a> has been used for the generation of the vessels surfaces defining the anastomosis model.</p>
+
+<div class="attachment_container">
+	<a href="media/3dmesh.png" rel="lightbox" title="Hybrid mesh of the parameterized anastomosis obtained with vmtk"><img class="screenshot" width="150" src="media/3dmesh.png" alt="Hybrid mesh of the parameterized anastomosis obtained with vmtk"/></a>
+</div>
+
+<p>The Gnuid solver is based on a fully implicit implementation of the well known Pressure-Correction scheme introduced by Guermond and Quartapelle (<em>Guermond JL et al., On stability and convergence of projection methods based on pressure poisson equation. Int. J. Num. Meth. Fluids 1998; 26:1039-1053.</em>) and used a discontinuous approximation for the velocity unknown and a continuous approximation for the pressure. The ability to combine a discontinuous Galerkin (dG) and a continuous Galerkin (cG) discretization in a dG-cG velocity-pressure space couple provides some interesting properties. It yields inherently inf-sup stable equal-order velocity-pressure discretizations, the better behaviour of discontinuous approximations in convection-dominated regimes is exploited in the advection-diffusion step and the cG formulation limits the cost of the Laplacian operator associated to the projection step.</p>
+<div class="attachment_container">
+	<a href="media/3dsim.png" rel="lightbox" title="CFD results on end-to-side anastomoses models"><img class="screenshot" width="150" src="media/3dsim.png" alt="CFD results on end-to-side anastomoses models"/></a>
+</div>
+<p>To ensure stability at high-Reynolds numbers and reduce the amount of artificial diffusion, the convective term is discretized following Di Pietro and Ern (<em>D. A. Di Pietro et al., Discrete functional analysis tools for discontinuous Galerkin methods with application to the incompressible Navier-Stokes equations, Math. Comp. 79 (2010) 1303-1330.</em>), where a non-dissipative formulation has been proposed.</p>
+<div class="attachment_container">
+	<a href="media/Pdrop.png" rel="lightbox" title="Pressure drop equation for anastomosis element"><img class="left_snippet" width="150" src="media/Pdrop.png" alt="Pressure drop equation for anastomosis element"/></a>
+</div>
+<p>The discretization has been validated against a large set of classical two- and three-dimensional tests covering a wide range of Reynolds numbers and has proved effective for the simulation of convection-dominated flows both from the accuracy and the computational cost viewpoints (<em>Botti L. et al., 2011. A pressure-correction scheme for convection-dominated incompressible flows with discontinuous velocity and continuous pressure. J. Comput. Phys., pp. 572-585.</em>).</p>
+ 
 </div>
 
 <h4>Windkessel element</h4>
 <div class="description_2">
+<div class="attachment_container">
+	<a href="media/wk_el.png" rel="lightbox" title="Windkessel element"><img class="snippet" width="150" src="media/wk_el.png" alt="Windkessel element"/></a>
 </div>
+<p>This element has been implemented with a 0D three-element Windkessel model, as illustrated in <em>Westerhof N. et al., An artificial arterial system for pumping hearts, J. Appl Phys 1971.</em>, consisting of a characteristic impedance, <em>Z<sub>wk</sub></em>, a resistance, <em>R<sub>wk</sub></em> and a compliance, <em>C<sub>wk</sub></em>. The characteristic impedance is chosen such that the reflections from high frequencies are attenuated. Standard reference pressure <em>P<sub>v</sub></em> and extravascular pressure <em>P<sub>e</sub></em> are prescribed as <a href="#boundary_conditions">boundary condition parameters.</a> Total resistance <em>R<sub>p</sub></em> (<em>Z<sub>wk</sub>+R<sub>wk</sub></em>) is defined as <em>P/(k*Q)</em> with <em>k</em> the fraction of the cardiac output flowing though the peripheral bed, <em>p</em> the mean arterial pressure and <em>q</em> the cardiac output. The pressure wave decreases during diastole with a time constant, that is equal to <em>R<sub>wk</sub>*C<sub>wk</sub></em>, which can be obtained from the descending slope of the local pressure curve during diastole or can be estimated based on literature.</p>
+</div> 
 
 <h3><a name="mesh_generation">Mesh generation</a></h3>
 <div class="description_2">
