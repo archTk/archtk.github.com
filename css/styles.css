@@ -84,7 +84,8 @@ html {
 }
 
 .header {
-    background-image:url(../media/---.jpg);
+    background-image:url(../media/archTk.png);
+    background-size: 22%;
 	background-repeat:no-repeat;
 	background-position:center;
 	width: 100%;
