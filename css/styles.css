@@ -64,7 +64,13 @@ html {
 
 /* Header */
 .header_container {
-background-image: url(../media/header.jpg);
+	background-image:url(../media/header.jpg);
+	background-repeat:repeat-x;
+	background-position:center;
+	height: 150px;
+	width: 100%;
+	left: 0px;
+	top: 0px;
 }
 
 .header_menu_container{
@@ -78,17 +84,16 @@ background-image: url(../media/header.jpg);
 }
 
 .header {
-    color: #FFFFFF;
-    font-family: Helvetica,sans-serif;
-    font-size: 60px;
-	margin-top:0px;
+    background-image:url(../media/---.jpg);
+	background-repeat:no-repeat;
+	background-position:center;
 	width: 100%;
-	height: 150px;
+	height: 100%;
 	display: block;
     clear: both;
 	overflow-x:hidden;
 	overflow-y:hidden;
-}
+} 
 
 /* Attachments, screenshot and code snippets */
 .attachment_container {
