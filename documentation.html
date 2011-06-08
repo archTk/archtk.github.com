@@ -16,7 +16,7 @@ title: Documentation
 <h3>Background</h3>
 
 <div class="description_2">
-<p>The python Network Solver (pyNS), is a software developed in Python with numpy package, needed for scientific computing with Python, with the aim to simulate hemodynamic behavior in vascular networks. pyNS is developed in the Department of Bioengineering, at Mario Negri Institute (MNI) with support from the EC FP7/2007-2013: ARCH, Project n. 224390.</p>
+<p>The python Network Solver (pyNS), is a software developed in Python with numpy package, needed for scientific computing with Python, with the aim to simulate hemodynamic behavior in vascular networks. pyNS is developed in the <a href="http://www.marionegri.it/mn/en/dipLab.html?dip=2" target="_blank">Department of Bioengineering</a>, at <a href="http://www.marionegri.it" target="_blank">Mario Negri Institute (MNI)</a> with support from the <a href="http://www.vph-arch.eu" target="_blank">EC FP7/2007-2013: ARCH, Project n. 224390.</a></p>
 <p>In the contest of the Arch Project, the aim of the application is to simulate hemodynamic changes induced by AVF surgery and long-term vascular and cardiac adaptation and to predict AVF function for improvement of surgical planning and AVF management. Verification of model prediction of AVF maturation, patency, onset of steal syndrome and cardiac overload will be performed on the basis of prospective observational studies in HD patients.</p>
 </div>
 
@@ -114,7 +114,7 @@ Characteristically parameters can be related to prescribed external pressures (e
 <div class="attachment_container">
 	<a href="media/wp_el.png" rel="lightbox" title="Wave propagation element"><img class="snippet" width="150" src="media/wp_el.png" alt="Wave propagation element"/></a>
 </div>
-<p>This element has been implemented with a 0D pulse wave propagation model as illustrated in <em>Huberts W. et al., A pulse wave propagation model to support decision-making in vascular access planning in the clinic, Med Eng and Physics, submitted.</em>. The relations between pressure and flow for each vascular segment are derived from conservation of mass and momentum by assuming fully-developed incompressible Newtonian flow in a straight vessel. In the momentum equation the convection term, the axial diffusion term and the effect of body forces are neglected. The lumped parameter model obtained consists of a resistor per unit length <em>R</em> (representing the resistance to flow through the vessel) and an inductor per unit length <em>L</em> (representing the inertia of the blood) in series. Both <em>R</em> and <em>L</em> also depend on Womersley number. To incorporate the storage capacity of the vessel in the model, a capacitor <em>C</em> is added to each side of the vascular segment, representing half of the total vascular compliance over that segment. The leakage <em>R<sub>L</sub></em> is captured by adding linear resistances (representing resistance to flow through small side-branches) in parallel to the capacitors. In addition, extravascular pressures <em>P<sub>e</sub></em> are prescribed as a <a href="#boundary_conditions">boundary condition parameter.</a></p>
+<p>This element has been implemented with a 0D pulse wave propagation model as illustrated in <em>Huberts W. et al., A pulse wave propagation model to support decision-making in vascular access planning in the clinic. Med Eng and Physics, (submitted)</em>. The relations between pressure and flow for each vascular segment are derived from conservation of mass and momentum by assuming fully-developed incompressible Newtonian flow in a straight vessel. In the momentum equation the convection term, the axial diffusion term and the effect of body forces are neglected. The lumped parameter model obtained consists of a resistor per unit length <em>R</em> (representing the resistance to flow through the vessel) and an inductor per unit length <em>L</em> (representing the inertia of the blood) in series. Both <em>R</em> and <em>L</em> also depend on Womersley number. To incorporate the storage capacity of the vessel in the model, a capacitor <em>C</em> is added to each side of the vascular segment, representing half of the total vascular compliance over that segment. The leakage <em>R<sub>L</sub></em> is captured by adding linear resistances (representing resistance to flow through small side-branches) in parallel to the capacitors. In addition, extravascular pressures <em>P<sub>e</sub></em> are prescribed as a <a href="#boundary_conditions">boundary condition parameter.</a></p>
 </div>
 
 <h4>Resistance element</h4>
@@ -153,7 +153,7 @@ Characteristically parameters can be related to prescribed external pressures (e
 <div class="attachment_container">
 	<a href="media/wk_el.png" rel="lightbox" title="Windkessel element"><img class="snippet" src="media/wk_el.png" alt="Windkessel element"/></a>
 </div>
-<p>This element has been implemented with a 0D three-element Windkessel model, as illustrated in <em>Westerhof N. et al., An artificial arterial system for pumping hearts, J. Appl Phys 1971.</em>, consisting of a characteristic impedance, <em>Z<sub>wk</sub></em>, a resistance, <em>R<sub>wk</sub></em> and a compliance, <em>C<sub>wk</sub></em>. The characteristic impedance is chosen such that the reflections from high frequencies are attenuated. Standard reference pressure <em>P<sub>v</sub></em> and extravascular pressure <em>P<sub>e</sub></em> are prescribed as <a href="#boundary_conditions">boundary condition parameters.</a> Total resistance <em>R<sub>p</sub></em> (<em>Z<sub>wk</sub>+R<sub>wk</sub></em>) is defined as <em>P/(k*Q)</em> with <em>k</em> the fraction of the cardiac output flowing though the peripheral bed, <em>p</em> the mean arterial pressure and <em>q</em> the cardiac output. The pressure wave decreases during diastole with a time constant, that is equal to <em>R<sub>wk</sub>*C<sub>wk</sub></em>, which can be obtained from the descending slope of the local pressure curve during diastole or can be estimated based on literature.</p>
+<p>This element has been implemented with a 0D three-element Windkessel model, as illustrated in <em>Westerhof N. et al., An artificial arterial system for pumping hearts. J. Appl Phys (1971).</em>, consisting of a characteristic impedance, <em>Z<sub>wk</sub></em>, a resistance, <em>R<sub>wk</sub></em> and a compliance, <em>C<sub>wk</sub></em>. The characteristic impedance is chosen such that the reflections from high frequencies are attenuated. Standard reference pressure <em>P<sub>v</sub></em> and extravascular pressure <em>P<sub>e</sub></em> are prescribed as <a href="#boundary_conditions">boundary condition parameters.</a> Total resistance <em>R<sub>p</sub></em> (<em>Z<sub>wk</sub>+R<sub>wk</sub></em>) is defined as <em>P/(k*Q)</em> with <em>k</em> the fraction of the cardiac output flowing though the peripheral bed, <em>p</em> the mean arterial pressure and <em>q</em> the cardiac output. The pressure wave decreases during diastole with a time constant, that is equal to <em>R<sub>wk</sub>*C<sub>wk</sub></em>, which can be obtained from the descending slope of the local pressure curve during diastole or can be estimated based on literature.</p>
 </div> 
 
 <h3><a name="mesh_generation">Mesh generation</a></h3>
@@ -196,25 +196,101 @@ Characteristically parameters can be related to prescribed external pressures (e
 
 <h3><a name="post_processing">Post processing features</a></h3>
 <div class="description_2">
+<p>Network Solution class elaborates results for post-processing providing a family of methods related to volumetric flow rate, reynolds number, vascular pressure, wall shear stress and pulse wave velocity. pyNS is able to provide information for each global degree of freedom of the vascular network. Moreover, this class allows to write hemodynamic information in a specific xml file which can be <a href="#">imported</a> in archNE.</p>
 </div>
 
 <h4><a name="post_processing_plots">Graphical plots</a></h4>
 <div class="description_2">
+<div class="attachment_container">
+  <a href="media/flow.png" rel="lightbox" title="Example of volumetric flow rate signal"><img class="screenshot" width="150px" src="media/flow.png" alt="Example of volumetric flow rate signal"/></a>
+</div>
+<p>Thanks to <a href="http://matplotlib.sourceforge.net/" target="_blank" title="Matplotlib library">Matplotlib library</a>, a python 2D plotting library which produces publication quality figures in a variety of hardcopy formats and interactive environments across platforms, this class can elaborate solutions in a graphical form.</p>
+<p>A short how-to for handling graphical features of post processing class can be found in the <a href="#post_processing_guidelines">pyNS how-to section</a>.</p>
 </div>
 
 <h4><a name="post_processing_txt">Writing results in a text file</a></h4>
 <div class="description_2">
+<p>Network Solution class provides methods for writing volumetric flow rate, reynolds number, pressure, wall shear stress and pulse wave velocity time-signals for each mesh in specific text files.</p>
+<p>A short how-to for handling basic features of post processing class can be found in the <a href="#post_processing_guidelines">pyNS how-to section</a>.</p>
 </div>
 
 <h4><a name="inverse_womersley">The inverse womersley method for computing wall shear stress</a></h4>
 <div class="description_2">
+<div class="attachment_container">
+  <a href="media/wss.png" rel="lightbox" title="Example of wall shear stress signal computed with the inverse womersley method"><img class="screenshot" width="150px" src="media/wss.png" alt="Example of wall shear stress signal computed with the inverse womersley method"/></a>
+</div>
+<p>The Inverse Womersley class implements the method described in <em>Cezeaux J.L. et al., Accuracy of the inverse Womersley method for the calculation of hemodynamic variables. Annals of biomedical engineering, 25:536-546 (1997)</em> for the accurate determination of wall shear stress.</p>
+<p>The fluid mechanics of the arterial system can have a direct effect on the physiology of the blood vessel wall. The accurate determination of arterial wall shear stress, however, is problematic. Calculations of wall shear stress from measured velocity profiles remain inaccurate due to the failure of these methods to resolve the velocity in the thin shear layer near the arterial wall. This difficulty has led investigators to the calculation of wall shear stress from other hemodynamic variables that can be more accurately and easily measured. One such calculation involves the inverse Womersley method that uses either the volumetric flow rate or centerline velocity to determine the wall shear stress.</p>
 </div>
 
 <h2><a name="pyNS_how-to">pyNS how-to</a></h2>
+<div class="description_2">
+<div class="attachment_container">
+  <a href="media/command_line.png" rel="lightbox" title="List of command line arguments for Main.py"><img class="big_snippet" src="media/command_line.png" alt="List of command line arguments for Main.py"/></a>
+</div>
+<p><br />In this section is shortly explained how to setup and run a simulation using pyNS. In this figure is displayed a list of command line arguments allowed for the Main.py file.</p>
+</div>
+<h3><a name="pyNS_how-to">Setting input files and meshing elements</a></h3>
+<div class="description_2">
+<div class="attachment_container">
+  <a href="media/csv_guideline.png" rel="lightbox" title="Example of csv files for additional patient-specific data"><img class="snippet" src="media/csv_guideline.png" alt="Example of csv files for additional patient-specific data"/></a>
+</div>
+<p>User has first to choice between a generic template network or a specific network.</p>
+<p>In case of generic template simulation, user has now the possibility to <a name="csv_file">specify additional patient-specific</a> geometry data (length and radius of vessels) and parameters (gender, date of birth, date of simulation, height, weight, systolic and diastolic pressures, cardiac period, hematocrit, protein plasma concentration...) using two different csv files (comma separated value). Some parameters has to be expressed in a standardized way: <em>gender</em> can be 0 (female) or 1 (male); <em>arm</em> can be 0 (left) or 1 (right	); <em>ftype</em> parameter, representing the fistula type, can be 0 (lower radio-cephalic end-to-end), 1 (lower radio-cephalic end-to-side), 2 (lower radio-cephalic side-to-side), 3 (upper brachio-cephalic end-to-side), 4 (upper brachio-cephalic side-to-side), 5 (upper brachio-basilic end-to-side), 6 (upper brachio-basilic side-to-side) or 7 (Pre-surgery, no fistula); <em>hyp</em> (hypertension pathology) and <em>diab</em> (diabetes) can be 0 (not present) or 1 (present).</p>
+<p>User can choose from <a href="#mesh_generation">two different types of meshing</a>, MaxLenghtMeshing and ToleranceMeshing. MaxLenghtMeshing simply checks vessel edge's length and if it's greater than a user-defined length, a new mesh is created. (Default value is 5 centimeters). ToleranceMeshing checks vessel edge's radius variation along curvilinear abscissa. If radius increases more than a tolerance value (%), a new mesh is created. (Default value is 33%).
+<em>Example:
+meshGenerator.SetMaxLength(5.0e-2) or meshGenerator.SetTolerance(33)</em></p>
+</div>
+
+<h3><a name="post_processing_guidelines">Post-processing guidelines</a></h3>
+<div class="description_2">
+<p>User can choose a textual and/or graphical representation of solutions. pyNS provides information about pressures, volumetric flow rates, reynolds numbers, pulse wave velocities and wall shear stresses along all network.</p>
+</div>
+
+<h4>General information</h4>
+<div class="description_2">
+<p>PlotBrachial, PlotRadial and PlotCephalic methods plot pressure, flow and wall shear stress signals into the same picture for a quickly view. WriteToXML method writes xml vascular output file which provides information about solutions in vascular network format. GetSolution method takes as input a superedge and plots pressure, flow and wall shear stress signals into the same picture for a quickly view. PulseWaveVelocity method takes as input one or two superedges and plot pulse wave velocity signal.</p>
+</div>
+
+<h4>Specific volumetric flow rate information</h4>
+<div class="description_2">
+<p>GetInflow method plots inflow cardiac function specified in boundary conditions XML file. PlotFlow method takes as input a single mesh and plots mean flow signal over it. PlotFlowComparative method plots brachial, radial and ulnar flow signals into the same picture for a quickly view. WriteFlowOutput method takes as input a single mesh and writes in a txt file flow signal over it. Additional methods related to Reynolds number computation have been implemented taking as input a single mesh and plottin reynolds number values over it.</p>
+</div>
+
+<h4>Specific pressure information</h4>
+<div class="description_2">
+<p>PlotPressure method takes as input a single mesh and plots mean pressure signal over it. PlotPressureTwo method takes as input a couple of mesh and plots mean pressure signals over them into the same picture for a quickly comparison. PlotPressureComparative method plots brachial, radial and ulnar pressure signals into the same picture for a quickly view. PlotPressureDrop method takes as input a single mesh and plots pressure drop signal over it. WritePressureInput and WritePressureOutput methods take as input a single mesh and write in a txt file pressure signal (respectively input or output) over it.</p>
+</div>
+
+<h4>Specific wall shear stress information</h4>
+<div class="description_2">
+<p>PlotPWSS method takes as input a single mesh and plots Poiseuille wall shear stress signal over it. PlotPWSSComparative method plots brachial, radial and ulnar Poiseuille wall shear stress signals into the same picture for a quickly view. PlotWSS takes as input a single mesh and plots Womersley wall shear stress signal over it. WriteWSSOutput method takes as input a single mesh and writes in a txt file Womersley wall shear stress signal over it.</p>
+</div>
+
+
+
 
 <h2><a name="pyNS_examples">pyNS examples</a></h2>
 
+<h3><a name="new_elements">Adding a new element into pyNS</a></h3>
+<div class="description_2">
+<p></p>
+</div>
+
+<h3>Building a non-linear element</h3>
+<div class="description_2">
+<p></p>
+</div>
+
 <h2><a name="regex">Regular expression for xml equations</a></h2>
+<div class="description_2">
+<p>In computing, a regular expression, also referred to as regex or regexp, provides a concise and flexible means for matching strings of text, such as particular characters, words, or patterns of characters. A regular expression is written in a formal language that can be interpreted by a regular expression processor (pyNS uses the <a href="#evaluator">Evaluator class</a>), a program that either serves as a parser generator or examines text and identifies parts that match the provided specification.</p>
+</div>
+<h3>Syntax</h3>
+<div class="description_2">
+<p></p>
+</div>
+
 
 <h2><a name="archNE_documentation">archNE documentation</a></h2>
 
