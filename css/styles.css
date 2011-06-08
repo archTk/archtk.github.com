@@ -107,8 +107,14 @@ html {
 	float: right;
 	margin: auto auto auto 20px;
 	width:220px;
-	
 }
+.big_video{
+	border: 0 none;
+	clear: right;
+	margin: auto auto auto 20px;
+	width:640px;
+}
+
 .screenshot {
     border: 0 none;
 	clear: right;

@@ -288,11 +288,57 @@ meshGenerator.SetMaxLength(5.0e-2) or meshGenerator.SetTolerance(33)</em></p>
 </div>
 <h3>Syntax</h3>
 <div class="description_2">
-<p></p>
+<p>Any xml equation has to expressed with this structure: a property of an edge or an element = mathematical expression.</p>
+<p>For specifying an element, edge name, which the element is belonging to, has to be enclosed in square brackets. Additional information about curvilinear abscissa (the position of the element inside its edge) can be provided, otherwise default value is 0.0. This type of expressions is evaluated everytime the element is initialized.</p>
+<p>For specifying an edge, its name has to be enclosed in curly brackets. Additional information about curvilinear abscissa (which permits to assign the computed value in the exact location along the edge) can be provided, otherwise default value is 0.0. This type of expressions is evaluated only during <a href="#model_adaptor">model adaptor</a> phase and it's used for a <a href="#patient_specific">patient-specific</a> adaption from a <a href="#generic_network">generic template.</a></p>
+<p>Every variable has to be expressed with a prefix tag, <em>$</em> and has to be assigned to an edge or an element. If variable refers to a costant <a href="#parameters">parameter</a> defined in the <a href="#boundary_conditions">boundary conditions xml file</a>, variable has to be followed by empty square brackets.</p>
+<p>Any xml equation must be included in xml file between xml expression tag.</p>
 </div>
 
+<h4>Building a regex equation for model adaptor</h4>
+<div class="description_2">
+<p>The structure for building an xml equation for model adaptor is very simple.</p>
+<p><xmp><length unit="m" accuracy="10%" source="US">
+  <expression>$Length{radial_prox} = (0.09855*$height[])*1e-2</expression>
+</length></xmp></p>
+<p>In this example we assign to the length property of the radial_prox edge the computed value resulting from the product between a numerical costant and a parameter defined in the boundary conditions file (patient height).</p>
+<p><xmp><radius_array unit="m" accuracy="10%" source="US">
+  <value s = "0.0">
+    <expression>$Radius{radial_prox,0.0} = 1.03*$Radius{radial_prox,1.0}</expression>
+  </value>
+  <value s = "1.0">
+    <expression>$Radius{radial_prox,1.0} = 0.55*$Radius{brachial_dist,1.0}</expression>
+  </value>
+</radius_array></xmp></p>
+<p>In this example we assign to the radius array property of the radial_prox edge the computed value resulting from the product between a numerical costant and a property value of corresponding edge. In this example, abscissa value is indicated for assigning computed value in the corresponding <em>s</em> position along the edge.</p>
+</div>
+
+<h4>Building a regex equation for element properties and non-linearities features.</h4>
+<div class="description_2">
+<p>The structure for building an xml equation for element properties and non-linearities features is similar to previous one. The main diffence consists to enclosing edge name between  square brackets [] instead of curly brackets {}.</p>
+<p><xmp><windkessel>
+  <expression>$WindkesselRel[wk_left_carotid] = (($mean_pressure[])/(0.07*$cardiac_output[]))
+  *(133.3223684211*6.0e7)</expression>
+</windkessel></xmp></p>
+<p>In this example we assign to the WindkesselRel property of the wk_left_carotid element the computed value resulting from the right hand-side expression. This resistance is described as the ratio between arterial mean pressure and the /% of the cardiac output. Numerical costant are used for unit conversion.</p>
+<p><xmp><radius_array unit="m" accuracy="10%" source="US">
+  <value s = "0.0">
+    <scalar>1.32e-3</scalar>
+    <expression>$Radius[basilic_vein]=$RadiusAtRest[basilic_vein]*sqrt((1.0-0.55*
+    (1.0-($Pressure[basilic_vein]/(1066.66+$Pressure[basilic_vein])))))</expression>
+  </value>
+  <value s = "1.0">
+    <scalar>1.8e-3</scalar>
+    <expression>$Radius[basilic_vein]=$RadiusAtRest[basilic_vein]*sqrt((1.0-0.55*
+    (1.0-($Pressure[basilic_vein]/(1066.66+$Pressure[basilic_vein])))))</expression>
+  </value>
+</radius_array></xmp></p>
+<p>In this example we assign to the Radius property of the basilic vein elements the computed value resulting from the right hand-side expression. This property is non-linear because it depend on pressure value. Each timestep this expression is evaluated using as input the pressure value computed in the previous timestep. RadiusAtRest variable represent the scalar value of the radius measured with the tourniquet, which is indicated between scalar tags.</p>
+</div>
 
 <h2><a name="archNE_documentation">archNE documentation</a></h2>
-
+<div class="description_2">
+<p></p>
+</div>
 
 <div class="pre_footer"></div>
