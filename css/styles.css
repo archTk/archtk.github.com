@@ -289,7 +289,6 @@ html {
 }
 
 a.button {
- 	
 	margin: 0px 15px 0px auto;
 	text-align: center;
     background: transparent url('images/bg_button_a.gif') no-repeat scroll top right;
@@ -320,3 +319,32 @@ a.button:active span {
     padding: 6px 0 4px 18px; /* push text down 1px */
 } 
 
+.button2 {
+   margin: 0px 20px 0px auto;
+   border-top: 1px solid #2277ab;
+   background: #000000;
+   background: -webkit-gradient(linear, left top, left bottom, from(#104e78), to(#000000));
+   background: -moz-linear-gradient(top, #104e78, #000000);
+   padding: 12px 24px;
+   -webkit-border-radius: 13px;
+   -moz-border-radius: 13px;
+   border-radius: 10px;
+   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   box-shadow: rgba(0,0,0,1) 0 1px 0;
+   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+   color: white;
+   font-size: 11px;
+   font-family: 'Lucida Grande', Helvetica, Arial, Sans-Serif;
+   text-decoration: none;
+   vertical-align: middle;
+}
+.button2:hover {
+   border-top-color: #133069;
+   background: #133069;
+   color: #fffaff;
+}
+.button2:active {
+   border-top-color: #2677ad;
+   background: #2677ad;
+}
