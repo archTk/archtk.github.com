@@ -283,7 +283,7 @@ html {
 
 /* Buttons */
 .button_container {
-	margin: 0px auto 50px auto;
+	margin: 0px auto 20px auto;
 	text-align: center;
 	width: 300px;
 }
@@ -323,9 +323,9 @@ a.button:active span {
    margin: 0px 20px 0px auto;
    border-top: 1px solid #2277ab;
    background: #000000;
-   background: -webkit-gradient(linear, left top, left bottom, from(#104e78), to(#000000));
-   background: -moz-linear-gradient(top, #104e78, #000000);
-   padding: 12px 24px;
+   background: -webkit-gradient(linear, left top, left bottom, from(#3D5C7A), to(#000000));
+   background: -moz-linear-gradient(top, #3D5C7A, #000000);
+   padding: 8px 24px;
    -webkit-border-radius: 13px;
    -moz-border-radius: 13px;
    border-radius: 10px;
