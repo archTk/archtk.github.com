@@ -274,10 +274,7 @@ html {
 
 .footer_container {
     background-image:url(../media/footer.jpg);
-	width: 100%;
-	text-align: center;
-	display: block;
-    clear: both;
+	background-repeat:repeat;
 }
 
 .footer {
