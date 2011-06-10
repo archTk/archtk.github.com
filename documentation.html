@@ -279,7 +279,12 @@ meshGenerator.SetMaxLength(5.0e-2) or meshGenerator.SetTolerance(33)</em></p>
 
 <h3>Building a non-linear element</h3>
 <div class="description_2">
-<p></p>
+<p>An element is non-linear if at least one of its parameters is expressed with a <a href="#regex">regex equation.</a> Element class sets nonLinear variable to True if a non-linear parameter is present. User has to define into inputParameters method possibility to specify parameters both with a linear and a non-linear way. For example:</p>
+<p><em>if type(self.Resistance) is not str: self.R = self.Resistance</p>
+<p>else: evaluator.evaluate(self.Resistance)</em></p>
+<p>User has to define also a method for setting the non-linear parameter. Evaluator class will call this method for setting value into element after evaluating the expression. For example:</p>
+<p><em>def SetResistance(self, resistance, info=none):</p>
+<p>self.R = resistance</p></em>
 </div>
 
 <h2><a name="regex">Regular expression for xml equations</a></h2>
