@@ -109,7 +109,7 @@ Characteristically parameters can be related to prescribed external pressures (e
 <p>A short how-to for implementing a new element into pyNS can be found in the <a href="#new_elements">pyNS example section</a>.</p>
 </div>
 
-<h4>Wave propagation element</h4>
+<h4><a name="wave_propagation">Wave propagation element</a></h4>
 <div class="description_2">
 <div class="attachment_container">
 	<a href="media/wp_el.png" rel="lightbox" title="Wave propagation element"><img class="snippet" width="150" src="media/wp_el.png" alt="Wave propagation element"/></a>
@@ -117,7 +117,7 @@ Characteristically parameters can be related to prescribed external pressures (e
 <p>This element has been implemented with a 0D pulse wave propagation model as illustrated in <em>Huberts W. et al., A pulse wave propagation model to support decision-making in vascular access planning in the clinic. Med Eng and Physics, (submitted)</em>. The relations between pressure and flow for each vascular segment are derived from conservation of mass and momentum by assuming fully-developed incompressible Newtonian flow in a straight vessel. In the momentum equation the convection term, the axial diffusion term and the effect of body forces are neglected. The lumped parameter model obtained consists of a resistor per unit length <em>R</em> (representing the resistance to flow through the vessel) and an inductor per unit length <em>L</em> (representing the inertia of the blood) in series. Both <em>R</em> and <em>L</em> also depend on Womersley number. To incorporate the storage capacity of the vessel in the model, a capacitor <em>C</em> is added to each side of the vascular segment, representing half of the total vascular compliance over that segment. The leakage <em>R<sub>L</sub></em> is captured by adding linear resistances (representing resistance to flow through small side-branches) in parallel to the capacitors. In addition, extravascular pressures <em>P<sub>e</sub></em> are prescribed as a <a href="#boundary_conditions">boundary condition parameter.</a></p>
 </div>
 
-<h4>Resistance element</h4>
+<h4><a name="resistance">Resistance element</a></h4>
 <div class="description_2">
 <div class="attachment_container">
 	<a href="media/r_el.png" rel="lightbox" title="Resistance element"><img class="snippet" width="150" src="media/r_el.png" alt="Resistance element"/></a>
@@ -126,7 +126,7 @@ Characteristically parameters can be related to prescribed external pressures (e
 <p>Resistor <em>R</em> can be implemented as a variable resistance and its law will be described in the vascular network xml file according to the <a href="#regex">regular expression</a> structure for pyNS. User can decide to mesh each edge with this model simply assigning to the edge's <em>type</em> attribute the value <em>"Resistance"</em>.</p>
 </div>
 
-<h4>Anastomosis element</h4>
+<h4><a name="anastomosis">Anastomosis element</a></h4>
 <div class="description_2">
 <div class="attachment_container">
 	<a href="media/an_el.png" rel="lightbox" title="Anastomosis element"><img class="snippet" width="150" src="media/an_el.png" alt="Anastomosis element"/></a>
@@ -148,7 +148,7 @@ Characteristically parameters can be related to prescribed external pressures (e
 <p>The discretization has been validated against a large set of classical two- and three-dimensional tests covering a wide range of Reynolds numbers and has proved effective for the simulation of convection-dominated flows both from the accuracy and the computational cost viewpoints (<em>L. Botti et al., A pressure-correction scheme for convection-dominated incompressible flows with discontinuous velocity and continuous pressure. J. Comput. Phys., 230 (2011).</em>).</p>
 </div>
 
-<h4>Windkessel element</h4>
+<h4><a name="windkessel">Windkessel element</a></h4>
 <div class="description_2">
 <div class="attachment_container">
 	<a href="media/wk_el.png" rel="lightbox" title="Windkessel element"><img class="snippet" src="media/wk_el.png" alt="Windkessel element"/></a>

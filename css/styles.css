@@ -139,6 +139,16 @@ html {
 	margin: auto 20px auto auto;
 }
 
+.gallery {
+    border: 0 none;
+	width: 150px;
+	height: 135px;
+	margin: auto 5px auto auto;
+	border-bottom:1px solid #000000;
+	border-top:1px solid #000000;
+	border-left:1px solid #000000;
+	border-right:1px solid #000000;
+}
 
 .logo {
     border: 0 none;

@@ -5,7 +5,42 @@ title: archTk use cases
 
 <h1>archTk use cases</h1>
 <div class="description">
-<p>This page describes examples of archTk use cases.</p>
+<p>This page describes examples of archTk use cases. Each case is composed by different sections: Problem background, the network model and results.</p>
 </div>
+
+<h2>ARCH Arteriovenous fistula</h2>
+<h3>Problem background</h3>
+<div class="description_2">
+
+<p>More than half a million people live in Europe on chronic renal replacement therapy by hemodialysis (HD). This number increases annually at a constant rate of 8%. The Achilles heel of HD is the vascular access (VA) used to connect patient circulation to the artificial kidney. The current recommendation for VA is the native arteriovenous fistula (AVF), surgically created in the forearm. VA dysfunction is the major cause of morbidity and hospitalisation in HD patients, and the major limitation of HD treatment. Short- and long-term AVF dysfunction includes non-maturation (inadequate increase in blood flow after surgery), stenosis due to intimal hyperplasia, and ultimately thrombotic occlusion. Steal syndrome and cardiac failure are also common complications of AVF creation. Prediction and prevention of VA dysfunction are still open clinical challenges with more than 90,000 procedures/year in Europe for revision or reoperation. Despite the magnitude of the clinical problem, there has been a paucity of novel therapeutic interventions in this field due to complex mechanisms responsible for AVF complications, which are closely related to both the sudden and sustained hemodynamic changes involved in AVF creation.
+The <a href="http://www.vph-arch.eu" target="_blank">EC FP7/2007-2013: ARCH, Project n. 224390.</a> will develop image-based patient-specific computational modelling tools to simulate hemodynamic changes induced by AVF surgery and long-term vascular and cardiac adaptation. The modelling tools will be designed and experimentally validated to predict AVF function for improvement of surgical planning and AVF management, and will be provided to clinical end users by a distributed IT infrastructure. Verification of model prediction of AVF maturation, patency, onset of steal syndrome and cardiac overload will be performed on the basis of prospective observational studies in HD patients. The basic tools and data produced in the context of the project will be made available under open-source licenses and shared in the context of the VPH initiative.</p>
+</div>
+
+<h3>The network model</h3>
+<div class="description_2">
+<div class="attachment_container">
+	<a href="media/fistula_usecase.png" rel="lightbox" title="ARCH fistula usecase network model"><img class="snippet" width="150" src="media/fistula_usecase.png" alt="ARCH fistula usecase network model"/></a>
+</div>
+<p>Depending on the arm in which the vascular access is created, the left or the right arm is modeled in detail. The aorta, the vessels in the lower body, in the contralateral arm and in the head are only modeled partially and closed by <a href="/documentation.html#windkessel">end-segments.</a> After AVF surgery, an element tha model the <a href="/documentation.html#anastomosis">anastomosis</a> and a venous branch are added to model the venous return of the AVF. For an upper arm a single vein is added (basilic or cephalic vein), whereas for a lower arm AVF the distal cephalic vein, the median cubital vein and the proximal basilic vein are added. All these generic models can be made  <a href="/documentation.html#patient_specific">patient-specific.</a></p>
+<br />
+<div class="attachment_container">
+	<a href="media/lower_LRC_ES.png" rel="lightbox[models]" title="ARCH left lower arm radio-cephalic end-to-side fistula network model"><img class="gallery" src="media/lower_LRC_ES.png" alt="ARCH left lower arm radio-cephalic end-to-side fistula network model"/></a>
+	<a href="media/lower_LRC_EE.png" rel="lightbox[models]" title="ARCH left lower arm radio-cephalic end-to-end fistula network model"><img class="gallery" src="media/lower_LRC_EE.png" alt="ARCH left lower arm radio-cephalic end-to-end fistula network model"/></a>
+	<a href="media/upper_LBC.png" rel="lightbox[models]" title="ARCH left upper arm brachio-cephalic end-to-side fistula network model"><img class="gallery" src="media/upper_LBC.png" alt="ARCH left upper arm brachio-cephalic end-to-side fistula network model"/></a>
+</div>
+<div class="attachment_container">
+	<a href="media/upper_LBB.png" rel="lightbox[models]" title="ARCH left upper arm brachio-basilic end-to-side fistula network model"><img class="gallery" src="media/upper_LBB.png" alt="ARCH left upper arm brachio-basilic end-to-side fistula network model"/></a>
+	<a href="media/lower_RRC_ES.png" rel="lightbox[models]" title="ARCH right lower arm radio-cephalic end-to-side fistula network model"><img class="gallery" src="media/lower_RRC_ES.png" alt="ARCH right lower arm radio-cephalic end-to-side fistula network model"/></a>
+	<a href="media/lower_RRC_EE.png" rel="lightbox[models]" title="ARCH right lower arm radio-cephalic end-to-end fistula network model"><img class="gallery" src="media/lower_RRC_EE.png" alt="ARCH right lower arm radio-cephalic end-to-end fistula network model"/></a>
+</div>
+<div class="attachment_container">
+	<a href="media/upper_RBC.png" rel="lightbox[models]" title="ARCH right upper arm brachio-cephalic end-to-side fistula network model"><img class="gallery" src="media/upper_RBC.png" alt="ARCH right upper arm brachio-cephalic end-to-side fistula network model"/></a>
+	<a href="media/upper_RBB.png" rel="lightbox[models]" title="ARCH right upper arm brachio-basilic end-to-side fistula network model"><img class="gallery" src="media/upper_RBB.png" alt="ARCH right upper arm brachio-basilic end-to-side fistula network model"/></a>
+</div>
+<p>Generic rules description...</p>
+
+</div>
+
+
 
 <div class="pre_footer_long"></div>
