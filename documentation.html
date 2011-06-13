@@ -5,12 +5,18 @@ title: Documentation
 
 <h1>Documentation</h1>
 <div class="description">
-  <p>archTK documentation is composed by <a href="/tutorials.html" target="_blank" title="video Tutorials">archTk video tutorials</a>, <a href="/usecases.html" target="_blank" title="use cases">archTK usecases</a>, <a href="#pyNS_architecture">pyNS architecture</a>, <a href="#pyNS_how-to">pyNS how-to guidelines</a>, <a href="#pyNS_examples">pyNS development examples</a>, <a href="#regex">regex building for xml equations</a> and <a href="#archNE_documentation">archNE documentation.</a></p>
+  <p>archTK documentation is composed by <a href="/tutorials.html" target="_blank" title="video Tutorials">archTk video tutorials</a>, <a href="/usecases.html" target="_blank" title="use cases">archTK usecases</a>, <a href="#pyNS_architecture">pyNS architecture</a>, <a href="#pyNS_how-to">pyNS how-to guidelines</a>, <a href="#pyNS_examples">pyNS development examples</a>, <a href="#regex">regex building for xml equations</a> and <a href="#archNE_documentation">"few words on archNE".</a></p>
 </div>
 <div class="button_container">
 	<a class="button2" href="/tutorials.html"target="_blank" onclick="this.blur();"><span>Video Tutorials</span></a> 
 	<a class="button2" href="/usecases.html"target="_blank" onclick="this.blur();"><span>Use Cases</span></a> 
 </div>
+  
+<h2><a name="archNE_documentation">Few words on archNE</a></h2>
+<div class="description_2">
+<p><a href="https://github.com/archTk/arch-ne" target="_blank">The ARCH Network Editor (archNE)</a> aims at providing a GUI for the usage of <a href="https://github.com/archTk/pyNS" target="_blank">pyNS</a> and it  has been developed by <a href="http://www.orobix.com" title="www.orobix.com" target="_blank">Orobix</a> in the context of <a href="http://www.vph-arch.eu" target="_blank">the same european project.</a>
+archNE uses the cross-platform user interface framework <a href="http://www.qt.nokia.com" target="_blank">Qt</a> and its architecture is based on the Model-View-Controller paradigm in order to allow an easy object-oriented programming (OOP). The OOP nature of the system allows it to be adapted to other 0D-1D solvers by simply changing one class of its: the IO class governing the exchange of data with the external solver.</p>
+</div>  
   
 <h2><a name="pyNS_architecture">pyNS architecture</a></h2>
 <h3>Background</h3>
@@ -358,11 +364,6 @@ meshGenerator.SetMaxLength(5.0e-2) or meshGenerator.SetTolerance(33)</em></p>
   </value>
 </radius_array></xmp></p>
 <p>In this example we assign to the Radius property of the basilic vein elements the computed value resulting from the right hand-side expression. This property is non-linear because it depend on pressure value. Each timestep this expression is evaluated using as input the pressure value computed in the previous timestep. RadiusAtRest variable represent the scalar value of the radius measured with the tourniquet, which is indicated between scalar tags.</p>
-</div>
-
-<h2><a name="archNE_documentation">archNE documentation</a></h2>
-<div class="description_2">
-<p>Coming soon...</p>
 </div>
 
 <div class="pre_footer"></div>
