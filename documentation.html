@@ -274,10 +274,23 @@ meshGenerator.SetMaxLength(5.0e-2) or meshGenerator.SetTolerance(33)</em></p>
 
 <h3><a name="new_elements">Adding a new element into pyNS</a></h3>
 <div class="description_2">
-<p></p>
+<div class="attachment_container">
+  <a href="media/LowPassFilter_init.png" rel="lightbox" title="LowPassFilter Class, constructor"><img class="snippet" src="media/LowPassFilter_init.png" alt="LowPassFilter Class, constructor"/></a>
+</div>
+<p>pyNS has been designed with an object-oriented approach, which allows to abstracts the concept of element from the numerical solver itself. This approach makes it very easy to add a new element into pyNS.</p>
+<div class="attachment_container">
+  <a href="media/LowPassFilter_input.png" rel="lightbox" title="LowPassFilter Class, InputParameters method"><img class="left_snippet" src="media/LowPassFilter_input.png" alt="LowPassFilter Class, InputParameters method"/></a>
+</div>
+<p> <strong>First Step: creating the new element class.</strong> In this example we will implement a new element representing a low-pass filter, called "LowPassFilterElement". This element is composed by a resistor in series with a load and a capacitor in parallel with the load. Constructor method has to define common element characteristics such as id, its nodes, its name, local degrees of freedom and element parameters. Parameters can be described by a scalar value or with an <a href="#regex">equation</a>, thus making the element <a href="#nonLinear_element">non-linear</a>. InputParameters method, after calling method from the superclass, has to check if its parameters are expressed with an <a href="#regex">equation</a> or not. If any parameter is in a non-linear form, inputParameters method has to call <a href="#evaluator">evaluator class</a> for evaluating the <a href="#regex">equation</a>. </p> 
+<p> Don't forget to define Set methods for resistance and compliance parameters.</p> 
+<div class="attachment_container">
+  <a href="media/LowPassFilter_circuit.png" rel="lightbox" title="LowPassFilter Class, Element internal circuit definition"><img class="snippet" src="media/LowPassFilter_circuit.png" alt="LowPassFilter Class, Element internal circuit definition"/></a>
+</div>
+<p>Last but not least, we have to define a method called GetCircuitMatrix for building electrical circuit design,a method for setting prescibed pressures and a set of methods for managing local degrees of freedom and element's nodes. Each row of the circuit matrix is an edge and each column is a variable (Node1, Node2, R, C, L). The prescribed pressure is located after the capacitor, and a method called GetExternalPressureLocalDofs has to set prescribed pressure in the correct local degree of freedom.</p>
+<p>The complete code for this example is available <a href="examples/lowPassFilter.py" target="_parent" title="lowPassFilterElement">here.</a></p>
 </div>
 
-<h3>Building a non-linear element</h3>
+<h3><a name="nonLinear_element">Building a non-linear element</a></h3>
 <div class="description_2">
 <p>An element is non-linear if at least one of its parameters is expressed with a <a href="#regex">regex equation.</a> Element class sets nonLinear variable to True if a non-linear parameter is present. User has to define into inputParameters method possibility to specify parameters both with a linear and a non-linear way. For example:</p>
 <p><em>if type(self.Resistance) is not str: self.R = self.Resistance</p>
