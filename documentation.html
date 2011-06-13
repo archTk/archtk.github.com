@@ -292,11 +292,8 @@ meshGenerator.SetMaxLength(5.0e-2) or meshGenerator.SetTolerance(33)</em></p>
 <div class="attachment_container">
   <a href="media/LowPassFilter_meshing.png" rel="lightbox" title="LowPassFilter Class, Editing the mesh generator"><img class="snippet" src="media/LowPassFilter_meshing.png" alt="LowPassFilter Class, Editing the mesh generator"/></a>
 </div>
-
 <em><xmp>if self.MeshType[edgeId] == 'LowPass Filter':
   newElement = Elements.LowPassFilterElement(arguments)</xmp></em>
-
-
 </div>
 
 <h3><a name="nonLinear_element">Building a non-linear element</a></h3>
@@ -315,9 +312,9 @@ meshGenerator.SetMaxLength(5.0e-2) or meshGenerator.SetTolerance(33)</em></p>
 </div>
 <h3>Syntax</h3>
 <div class="description_2">
-<p>Any xml equation has to expressed with this structure: a property of an edge or an element = mathematical expression.</p>
-<p>For specifying an element, edge name, which the element is belonging to, has to be enclosed in square brackets. Additional information about curvilinear abscissa (the position of the element inside its edge) can be provided, otherwise default value is 0.0. This type of expressions is evaluated everytime the element is initialized.</p>
-<p>For specifying an edge, its name has to be enclosed in curly brackets. Additional information about curvilinear abscissa (which permits to assign the computed value in the exact location along the edge) can be provided, otherwise default value is 0.0. This type of expressions is evaluated only during <a href="#model_adaptor">model adaptor</a> phase and it's used for a <a href="#patient_specific">patient-specific</a> adaption from a <a href="#generic_network">generic template.</a></p>
+<p>Any xml equation has to be expressed with this structure: a property of an edge or an element = mathematical expression.</p>
+<p>For specifying an element: the edge name, which the element is belonging to, has to be enclosed in square brackets. Additional information about curvilinear abscissa (the position of the element inside its edge) can be provided, otherwise default value is 0.0. This type of expressions is evaluated everytime the element is initialized.</p>
+<p>For specifying an edge: its name has to be enclosed in curly brackets. Additional information about curvilinear abscissa (which permits to assign the computed value in the exact location along the edge) can be provided, otherwise default value is 0.0. This type of expressions is evaluated only during <a href="#model_adaptor">model adaptor</a> phase and it's used for a <a href="#patient_specific">patient-specific</a> adaption from a <a href="#generic_network">generic template.</a></p>
 <p>Every variable has to be expressed with a prefix tag, <em>$</em> and has to be assigned to an edge or an element. If variable refers to a costant <a href="#parameters">parameter</a> defined in the <a href="#boundary_conditions">boundary conditions xml file</a>, variable has to be followed by empty square brackets.</p>
 <p>Any xml equation must be included in xml file between xml expression tag.</p>
 </div>
