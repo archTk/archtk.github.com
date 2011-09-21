@@ -122,17 +122,17 @@ Characteristically parameters can be related to prescribed external pressures (e
 	<a href="media/wp_el.png" rel="lightbox" title="Wave propagation element"><img class="snippet" width="150" src="media/wp_el.png" alt="Wave propagation element"/></a>
 </div>
 <p>This element has been implemented with a 0D pulse wave propagation model (5 degrees of freedom) as illustrated in <em>Huberts W. et al., A pulse wave propagation model to support decision-making in vascular access planning in the clinic. Med Eng and Physics, (2011)</em>.</p> 
-<p>The relations between pressure and volumetric flow rate for each vascular segment are derived from conservation of mass and momentum by assuming fully-developed incompressible Newtonian volumetric flow rate in a straight vessel. In the momentum equation the convection term, the axial diffusion term and the effect of body forces are neglected. The lumped parameter model obtained consists of a resistor per unit length R (representing the resistance to volumetric flow rate through the vessel) and an inductor per unit length L (representing the inertia of the blood) in series. Both R and L also depend on Womersley number.</p>
 <div class="attachment_container">
 	<a href="media/wp_el_eq1.png" rel="lightbox" title="Resistance and inductance equations"><img class="left_snippet" width="150" src="media/wp_el_eq1.png" alt="Resistance and inductance equations"/></a>
 </div>
+<p>The relations between pressure and volumetric flow rate for each vascular segment are derived from conservation of mass and momentum by assuming fully-developed incompressible Newtonian volumetric flow rate in a straight vessel. In the momentum equation the convection term, the axial diffusion term and the effect of body forces are neglected. The lumped parameter model obtained consists of a resistor per unit length R (representing the resistance to volumetric flow rate through the vessel) and an inductor per unit length L (representing the inertia of the blood) in series. Both R and L also depend on Womersley number.</p>
 <p>To incorporate the storage capacity of the vessel in the model, a capacitor C is added to each side of the vascular segment, representing half of the total vascular compliance over that segment. It is assumed that the artery is a thick-walled linear elastic tube.</p>
 <div class="attachment_container">
 	<a href="media/wp_el_eq2.png" rel="lightbox" title="Arterial compliance equation"><img class="left_snippet" width="150" src="media/wp_el_eq2.png" alt="Arterial compliance equation"/></a>
 </div>
 <p>Veins diameter(D) and compliance(C) are defined as functions of pressure p in which <em>D<sub>0</sub></em> is the diameter of the vein measured in correspondence of the mean pressure[Pa].</p>
 <div class="attachment_container">
-	<a href="media/wp_el_eq3.png" rel="lightbox" title="Venous diameter and compliance equations"><img class="left_snippet" width="150" src="media/wp_el_eq3.png" alt="Venous diameter and compliance equations"/></a>
+	<a href="media/wp_el_eq3.png" rel="lightbox" title="Venous diameter and compliance equations"><img class="snippet" width="150" src="media/wp_el_eq3.png" alt="Venous diameter and compliance equations"/></a>
 </div>
 <p>The leakage <em>R<sub>L</sub></em> is captured by adding linear resistances (representing resistance to volumetric flow rate through small side-branches) in parallel to the capacitors. In addition, extravascular pressures Pe are prescribed as a boundary condition parameter. The total resistance, total inertance and total compliance are obtained by integrating R, L and C over the segment length.</p>
 </div>
@@ -188,8 +188,11 @@ Characteristically parameters can be related to prescribed external pressures (e
 <div class="attachment_container">
 	<a href="media/dofmap.png" rel="lightbox" title="From a local to a global environment"><img class="screenshot" width="150" src="media/dofmap.png" alt="From a local to a global environment"/></a>
 </div>
-<p>Each element of the network knows only its nodes and its internal local degrees of freedom. A class, named dofmap, maps each local degree of freedom into a global degree of freedom,  handling connectivity between elements of the network.</p> 
-<p>Dofmap is used by <a href="#assembler">Assembler class</a> to assembling global matrix from element's local matrices.</p>
+<p>Each element of the network builds three local matrices by applying an analogue of Kirchoff’s current law to satisfy element-to-element mass conservation: a zero order matrix(M0), a first order matrix(M1) and a second order matrix(M2) containing reciprocal in- ertances, reciprocal resistances and compliances respectively. Each one is a square matrix of order corresponding to the total number of element’s degrees of freedom in which qe is a column vector containing nonzero values at the nodes where the flow is prescribed, pe is a column vector containing the global node pressure values.</p>
+<div class="attachment_container">
+	<a href="media/local_M_eq.png" rel="lightbox" title="Set of differential equations"><img class="snippet" width="150" src="media/local_M_eq.png" alt="Set of differential equations"/></a>
+</div>
+<p>A class, named dofmap, maps each local degree of freedom into a global degree of freedom, handling connectivity between elements of the network. Dofmap is used by <a href="#assembler">Assembler class</a> to assembling global matrix from element's local matrices.</p>
 </div>
 
 <h3><a name="numerical_solver">The numerical solver</a></h3>
@@ -198,21 +201,30 @@ Characteristically parameters can be related to prescribed external pressures (e
   <a href="media/numerical_scheme.png" rel="lightbox" title="Numerical scheme"><img class="snippet" src="media/numerical_scheme.png" alt="Numerical scheme"/></a>
 </div>
 <p>Solver class provides methods for solving the set of differential equations obtained by applying an analogue of Kirchoff's current law to satisfy element-to-element mass conservation.</p>
-<p>The time derivative and time integral in the set of the differential equations are approximated by using an implicit trapezium rule with initial conditions (q<sub>0</sub>=0 and p<sub>0</sub>=0). The final scheme is shown in the figure.</p> 
+<div class="attachment_container">
+	<a href="media/solver_eq.png" rel="lightbox" title="Numerical scheme"><img class="left_snippet" width="150" src="media/solver_eq.png" alt="Numerical scheme"/></a>
+</div>
+<p>The time derivative and time integral in the set of the differential equations are approximated by using an implicit trapezium rule with initial conditions (q<sub>0</sub>=0 and p<sub>0</sub>=0). The final scheme is shown in the figures.</p> 
 <p>To solve, an iterative procedure is used. User can set timestep value and the total number of simulation cycles into <a href="#parameters">simulation parameters file.</a></p>
 </div>
 
 <h4><a name="assembler">Assembler class</a></h4>
 <div class="description_2">
-<p>Assembler class, using local to global map of degrees of freedom provided by dofmap class, builds three global matrices (zero, first and second order) joining into one square matrix of order corresponding to the number of global degrees of freedom all local matrices of the same type. Moreover assembler class stores a copy of linear global matrices built excluding local matrices of non linear elements, for improving performances during non linear simulations. This architecture permits to avoid the complete reassembling of global matrices in case of non linearities and to stay focused only on a section of global matrices corresponding to the non linearity.
+<p>Assembler class, using local to global map of degrees of freedom (dofmap) provided by dofmap class, builds three global matrices <em>M<sub>G</sub></em> (zero, first and second order) joining into one square matrix of order corresponding to the number of global degrees of freedom all local matrices <em>M<sub>el</sub></em> of the same type.</p>
+<div class="attachment_container">
+	<a href="media/ass_eq.png" rel="lightbox" title="From local to global matrices"><img class="snippet" width="150" src="media/ass_eq.png" alt="From local to global matrices"/></a>
+</div>
+<p>Moreover assembler class stores a copy of linear global matrices built excluding local matrices of non linear elements, for improving performances during non linear simulations. This architecture permits to avoid the complete reassembling of global matrices in case of non linearities and to stay focused only on a section of global matrices corresponding to the non linearity.</p>
 </div>
 
 <h4><a name="non_linear_convergence">Non-linear convergence strategy</a></h4>
 <div class="description_2">
-<p>A non-linear convergence strategy has been implemented for solving system with non-linear characteristics.</p>
-<p>Solver class introduces an inertia relax coefficient (0.9) for improving convergence performances. Solution is thus considered as the sum between the 90% of the current solution <em>(p)</em> and the 10% of the solution at the previous non-linear incremental step <em>(p<sub>i</sub>)</em>. If non linear error, described as the ratio between the infinite norm of <em>p-p<sub>i</sub></em> and the infinite norm of p<sub>i</sub>, is larger than a predefined convergence tolerance <em>nltol</em>, the next non-linear incremental step is executed. Before executing the next non-linear incremental step pyNS has to evaluate non-linear elements and updating the system matrix.</p>
+<p>A non-linear convergence strategy has been implemented for solving system with non-linear characteristics. Solver class introduces an inertia relax coefficient (0.9) for improving convergence performances. Solution is thus considered as the sum between the 90% of the current solution <em(p)</em> and the 10% of the solution at the previous non-linear incremental step <em>(p<sub>i</sub>)</em>. If the non linear error<em>(nlerr)</em>, described as the ratio between the infinite norm of <em>p − p<sub>i</sub></em> and the infinite norm of <em>p<sub>i</sub></em>, is larger than a predefined convergence tolerance <em>nltol</em>, the next non-linear incremental step is executed.</p> 
+<div class="attachment_container">
+	<a href="media/nl_eq.png" rel="lightbox" title="Non linear convergence strategy"><img class="left_snippet" width="150" src="media/nl_eq.png" alt="Non linear convergence strategy"/></a>
 </div>
-
+<p>Before executing the next non-linear incremental step pyNS has to evaluate non-linear elements and updating the system matrix. Assembler class stores a copy of linear global matrices built excluding local matrices of non linear elements, for improving performances during non linear simulations. This architecture permits to avoid the complete reassembling of global matrices in case of non linearities and to stay focused only on a section of global matrices corresponding to the non linearity.</p>
+</div>
 
 <h3><a name="post_processing">Post processing features</a></h3>
 <div class="description_2">
@@ -240,7 +252,11 @@ Characteristically parameters can be related to prescribed external pressures (e
   <a href="media/wss.png" rel="lightbox" title="Example of wall shear stress signal computed with the inverse womersley method"><img class="screenshot" width="150px" src="media/wss.png" alt="Example of wall shear stress signal computed with the inverse womersley method"/></a>
 </div>
 <p>The Inverse Womersley class implements the method described in <em>Cezeaux J.L. et al., Accuracy of the inverse Womersley method for the calculation of hemodynamic variables. Annals of biomedical engineering, 25:536-546 (1997)</em> for the accurate determination of wall shear stress.</p>
+<div class="attachment_container">
+	<a href="media/wom_eq.png" rel="lightbox" title="Inverse womersley method equations"><img class="left_snippet" width="150" src="media/wom_eq.png" alt="Inverse womersley method equations"/></a>
+</div>
 <p>The fluid mechanics of the arterial system can have a direct effect on the physiology of the blood vessel wall. The accurate determination of arterial wall shear stress, however, is problematic. Calculations of wall shear stress from measured velocity profiles remain inaccurate due to the failure of these methods to resolve the velocity in the thin shear layer near the arterial wall. This difficulty has led investigators to the calculation of wall shear stress from other hemodynamic variables that can be more accurately and easily measured. One such calculation involves the inverse Womersley method that uses either the volumetric flow rate or centerline velocity to determine the wall shear stress.</p>
+<p>This module allows to plot velocity profiles into image files (.png format) and makes a movie (.avi format) from images set. The related movie represents the blood velocity profile during a cardiac cycle along the fractional radius of the selected vessel. MEncoder, a free command line video decoding, encoding and filtering tool released under the GNU General Public License, is required for using this feature.</p>
 </div>
 
 <h2><a name="pyNS_how-to">pyNS how-to</a></h2>
@@ -248,7 +264,7 @@ Characteristically parameters can be related to prescribed external pressures (e
 <div class="attachment_container">
   <a href="media/command_line.png" rel="lightbox" title="List of command line arguments for Main.py"><img class="big_snippet" src="media/command_line.png" alt="List of command line arguments for Main.py"/></a>
 </div>
-<p><br />In this section is shortly explained how to setup and run a simulation using pyNS. In this figure is displayed a list of command line arguments allowed for the Main.py file.</p>
+<p><br />In this section is shortly explained how to setup and run a simulation using pyNS. In this figure is displayed a list of command line arguments allowed for the Main.py file. Running Main.py -h or Main.py --help a brief explanation of implemented command line arguments is displayed.</p>
 </div>
 <h3><a name="pyNS_how-to">Setting input files and meshing elements</a></h3>
 <div class="description_2">
@@ -287,8 +303,13 @@ meshGenerator.SetMaxLength(5.0e-2) or meshGenerator.SetTolerance(33)</em></p>
 <p>PlotPWSS method takes as input a single mesh and plots Poiseuille wall shear stress signal over it. PlotPWSSComparative method plots brachial, radial and ulnar Poiseuille wall shear stress signals into the same picture for a quickly view. PlotWSS takes as input a single mesh and plots Womersley wall shear stress signal over it. WriteWSSOutput method takes as input a single mesh and writes in a txt file Womersley wall shear stress signal over it.</p>
 </div>
 
-
-
+<h4>Other information</h4>
+<div class="description_2">
+<p>pyNS provides information about Reynolds number, pulse wave velocity and velocity profile over the fractional radius.</p>
+<p>WriteReynolds method takes as input a single mesh and writes reynolds number signal in a txt file while PlotReynolds plots the signal.</p>
+<p>PulseWaveVelocity method takes as input one or two superedges and computes the pulse wave velocity(m/s) along a superedge or from the first to the last superedge.</p>
+<p>ShowVelocityProfile takes as input a single mesh and show a movie(.avi) with the velocity profile over the fractional radius while SaveVelocityProfile saves the movie in a subfolder.</p>
+</div>
 
 <h2><a name="pyNS_examples">pyNS examples</a></h2>
 
