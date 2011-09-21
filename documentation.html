@@ -110,8 +110,9 @@ Characteristically parameters can be related to prescribed external pressures (e
 
 <h3><a name="elements">Elements class</a></h3>
 <div class="description_2">
-<p>Elements class represents a general element, each specific element must be referred to it.</p>
-<p>Elements class provides methods for building its zero order matrix, first order matrix and second order matrix; this is a general strategy adopted for all kind of elements.</p>
+<p>Elements module is a collection of different kind of elements. Each element of the network has common characteristics, although they can be very different from each other.</p> 
+<p>The element defined in the Elements class represents a general element and each specific element must be referred to it. This class provides methods for building its zero order matrix, first order matrix and second order matrix; this is a general strategy adopted for all kind of elements.</p> 
+<p>Each kind of element represents a mathematical model which is implemented for the scope of modeling and studying pressure, volumetric flow rate and wall-shear stress distribution over the complete vascular system or a specific part of it.</p>
 <p>A short how-to for implementing a new element into pyNS can be found in the <a href="#new_elements">pyNS example section</a>.</p>
 </div>
 
@@ -120,7 +121,20 @@ Characteristically parameters can be related to prescribed external pressures (e
 <div class="attachment_container">
 	<a href="media/wp_el.png" rel="lightbox" title="Wave propagation element"><img class="snippet" width="150" src="media/wp_el.png" alt="Wave propagation element"/></a>
 </div>
-<p>This element has been implemented with a 0D pulse wave propagation model as illustrated in <em>Huberts W. et al., A pulse wave propagation model to support decision-making in vascular access planning in the clinic. Med Eng and Physics, (submitted)</em>. The relations between pressure and flow for each vascular segment are derived from conservation of mass and momentum by assuming fully-developed incompressible Newtonian flow in a straight vessel. In the momentum equation the convection term, the axial diffusion term and the effect of body forces are neglected. The lumped parameter model obtained consists of a resistor per unit length <em>R</em> (representing the resistance to flow through the vessel) and an inductor per unit length <em>L</em> (representing the inertia of the blood) in series. Both <em>R</em> and <em>L</em> also depend on Womersley number. To incorporate the storage capacity of the vessel in the model, a capacitor <em>C</em> is added to each side of the vascular segment, representing half of the total vascular compliance over that segment. The leakage <em>R<sub>L</sub></em> is captured by adding linear resistances (representing resistance to flow through small side-branches) in parallel to the capacitors. In addition, extravascular pressures <em>P<sub>e</sub></em> are prescribed as a <a href="#boundary_conditions">boundary condition parameter.</a></p>
+<p>This element has been implemented with a 0D pulse wave propagation model (5 degrees of freedom) as illustrated in <em>Huberts W. et al., A pulse wave propagation model to support decision-making in vascular access planning in the clinic. Med Eng and Physics, (2011)</em>.</p> 
+<p>The relations between pressure and volumetric flow rate for each vascular segment are derived from conservation of mass and momentum by assuming fully-developed incompressible Newtonian volumetric flow rate in a straight vessel. In the momentum equation the convection term, the axial diffusion term and the effect of body forces are neglected. The lumped parameter model obtained consists of a resistor per unit length R (representing the resistance to volumetric flow rate through the vessel) and an inductor per unit length L (representing the inertia of the blood) in series. Both R and L also depend on Womersley number.</p>
+<div class="attachment_container">
+	<a href="media/wp_el_eq1.png" rel="lightbox" title="Resistance and inductance equations"><img class="left_snippet" width="150" src="media/wp_el_eq1.png" alt="Resistance and inductance equations"/></a>
+</div>
+<p>To incorporate the storage capacity of the vessel in the model, a capacitor C is added to each side of the vascular segment, representing half of the total vascular compliance over that segment. It is assumed that the artery is a thick-walled linear elastic tube.</p>
+<div class="attachment_container">
+	<a href="media/wp_el_eq2.png" rel="lightbox" title="Arterial compliance equation"><img class="left_snippet" width="150" src="media/wp_el_eq2.png" alt="Arterial compliance equation"/></a>
+</div>
+<p>Veins diameter(D) and compliance(C) are defined as functions of pressure p in which <em>D<sub>0</sub></em> is the diameter of the vein measured in correspondence of the mean pressure[Pa].</p>
+<div class="attachment_container">
+	<a href="media/wp_el_eq3.png" rel="lightbox" title="Venous diameter and compliance equations"><img class="left_snippet" width="150" src="media/wp_el_eq3.png" alt="Venous diameter and compliance equations"/></a>
+</div>
+<p>The leakage <em>R<sub>L</sub></em> is captured by adding linear resistances (representing resistance to volumetric flow rate through small side-branches) in parallel to the capacitors. In addition, extravascular pressures Pe are prescribed as a boundary condition parameter. The total resistance, total inertance and total compliance are obtained by integrating R, L and C over the segment length.</p>
 </div>
 
 <h4><a name="resistance">Resistance element</a></h4>
