@@ -264,7 +264,7 @@ Characteristically parameters can be related to prescribed external pressures (e
 <div class="attachment_container">
   <a href="media/command_line.png" rel="lightbox" title="List of command line arguments for Main.py"><img class="big_snippet" src="media/command_line.png" alt="List of command line arguments for Main.py"/></a>
 </div>
-<p><br />In this section is shortly explained how to setup and run a simulation using pyNS. In this figure is displayed a list of command line arguments allowed for the Main.py file. Running Main.py -h or Main.py --help a brief explanation of implemented command line arguments is displayed.</p>
+<p><br />In this section is shortly explained how to setup and run a simulation using pyNS. In this figure is displayed a list of some command line arguments allowed for the Main.py file. Running Main.py -h or Main.py --help a brief explanation of implemented command line arguments is displayed.</p>
 </div>
 <h3><a name="pyNS_how-to">Setting input files and meshing elements</a></h3>
 <div class="description_2">
@@ -329,12 +329,11 @@ meshGenerator.SetMaxLength(5.0e-2) or meshGenerator.SetTolerance(33)</em></p>
 </div>
 <p>Last but not least, we have to define a method called GetCircuitMatrix for building electrical circuit design,a method for setting prescibed pressures and a set of methods for managing local degrees of freedom and element's nodes. Each row of the circuit matrix is an edge and each column is a variable (Node1, Node2, R, C, L). The prescribed pressure is located after the capacitor, and a method called GetExternalPressureLocalDofs has to set prescribed pressure in the correct local degree of freedom.</p>
 <p>The complete code for this example is available <a href="examples/lowPassFilter.py" target="_parent" title="lowPassFilterElement">here.</a></p>
-<p><strong>Second Step: editing parent Element class to support this new element.</strong> Element class has to create LowPassFilterElement if edge meshType variable is specified as LowPass Filter. Add this two lines into the Element class in newElement method, as shown in the picture.</p>
+<p><strong>Second Step: add the register Element statement to support this new element.</strong> Element class has to create LowPassFilterElement if edge meshType variable is specified as LowPass Filter. Add this line at the end of the LowPassFilterElement class, as shown in the picture.</p>
 <div class="attachment_container">
-  <a href="media/LowPassFilter_parent.png" rel="lightbox" title="LowPassFilter Class, Editing the Element Class"><img class="snippet" src="media/LowPassFilter_parent.png" alt="LowPassFilter Class, Editing the Element Class"/></a>
+  <a href="media/LowPassFilter_parent.png" rel="lightbox" title="LowPassFilter Class, adding the register element statement"><img class="snippet" src="media/LowPassFilter_parent.png" alt="LowPassFilter Class, adding the register element statement"/></a>
 </div>
-<em><xmp>if self.Type == "LowPass Filter":
-    element = LowPassFilterElement(arguments)</xmp></em>
+<em><xmp>RegisterElementType("LowPassFilter",LowPassFilterElement)</xmp></em>
 </div>
 
 <h3><a name="nonLinear_element">Building a non-linear element</a></h3>
