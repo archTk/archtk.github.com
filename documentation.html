@@ -8,8 +8,8 @@ title: Documentation
   <p>archTK documentation is composed by <a href="/tutorials.html" target="_blank" title="video Tutorials">archTk video tutorials</a>, <a href="/usecases.html" target="_blank" title="use cases">archTK usecases</a>, <a href="#pyNS_architecture">pyNS architecture</a>, <a href="#pyNS_how-to">pyNS how-to guidelines</a>, <a href="#pyNS_examples">pyNS development examples</a>, <a href="#regex">regex building for xml equations</a> and <a href="#archNE_documentation">"few words on archNE".</a></p>
 </div>
 <div class="button_container">
-	<a class="button2" href="/tutorials.html"target="_blank" onclick="this.blur();"><span>Video Tutorials</span></a> 
-	<a class="button2" href="/usecases.html"target="_blank" onclick="this.blur();"><span>Use Cases</span></a> 
+	<a class="button2" href="/tutorials.html" target="_blank" onclick="this.blur();"><span>Video Tutorials</span></a> 
+	<a class="button2" href="/usecases.html" target="_blank" onclick="this.blur();"><span>Use Cases</span></a> 
 </div>
   
 <h2><a name="archNE_documentation">Few words on archNE</a></h2>
@@ -121,7 +121,7 @@ Characteristically parameters can be related to prescribed external pressures (e
 <div class="attachment_container">
 	<a href="media/wp_el.png" rel="lightbox" title="Wave propagation element"><img class="snippet" width="150" src="media/wp_el.png" alt="Wave propagation element"/></a>
 </div>
-<p>This element has been implemented with a 0D pulse wave propagation model (5 degrees of freedom) as illustrated in <em>Huberts W. et al., A pulse wave propagation model to support decision-making in vascular access planning in the clinic. Med Eng and Physics, (2011)</em>.</p> 
+<p>This element has been implemented with a discretized 1D pulse wave propagation model (5 degrees of freedom) as illustrated in <em>Huberts W. et al., A pulse wave propagation model to support decision-making in vascular access planning in the clinic. Med Eng and Physics, (2011)</em>.</p> 
 <div class="attachment_container">
 	<a href="media/wp_el_eq1.png" rel="lightbox" title="Resistance and inductance equations"><img class="left_snippet" width="150" src="media/wp_el_eq1.png" alt="Resistance and inductance equations"/></a>
 </div>
@@ -229,6 +229,8 @@ Characteristically parameters can be related to prescribed external pressures (e
 <h3><a name="post_processing">Post processing features</a></h3>
 <div class="description_2">
 <p>Network Solution class elaborates results for post-processing providing a family of methods related to volumetric flow rate, reynolds number, vascular pressure, wall shear stress and pulse wave velocity. pyNS is able to provide information for each global degree of freedom of the vascular network. Moreover, this class allows to write hemodynamic information in a specific xml file which can be <a href="#">imported</a> in archNE.</p>
+<p>Post processed results can be visualized in a browser (Firefox, Chrome, Safari, Opera and Internet Explorer) without installing any additional library. pyNS simply provides information about pressure, volumetric flow rate, wall shear stress and reynolds number for each mesh. In case of vascular adaptation simulations, user can visualize results for each adaptation step.</p>
+<p>As example, a vascular network representing a radio-cephalic end-to-side fistula in a right arm with vascular adaptation (40 days from surgery) has been simulated and <a href="/results/post_processing.html" target="_blank">post processed results are available here<a/>.
 </div>
 
 <h4><a name="post_processing_plots">Graphical plots</a></h4>
