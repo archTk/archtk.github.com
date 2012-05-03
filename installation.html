@@ -5,7 +5,8 @@ title: Installation
 
 <h1>Installation</h1>
 <div class="description">
-    <p>To install the archTk, first <a href="download.html">download</a> the arch Network Editor and the pyNS solver from the repositories hosted at github.</p>
+    <p>To install the archTk, first <a href="download.html">download</a> the pyNS solver from the repositories hosted at github.</p>
+    <p>The arch Network Editor is available as binary release or you can <a href="download.html">download</a> the source code from the repositories hosted at github.</p>
 	<p>archTk is cross-platform and will compile and work on Linux, Mac OSX and Windows.<p>
 </div>
 
@@ -35,11 +36,17 @@ title: Installation
 
 <h3>pyNS Requirements</h3>
 <div class="description_2">
-    <p>In order to successfully use pyNS, the following software has to be installed in your system:</p>
+    <p>In order to successfully use pyNS, the following software have to be installed in your system:</p>
 	<ul>
 		<li><a href="http://www.python.org/download/" target="_blank" title="Python">Python(2.x)</a></li>
-		<li><a href="http://www.scipy.org/Download" target="_blank" title="Numpy package">Numpy package</a></li>
+		<li><a href="http://www.scipy.org/Download" target="_blank" title="Numpy package">NumPy package</a></li>
+		<li><a href="http://www.scipy.org/Download" target="_blank" title="Scipy package">SciPy package (required only for Windows Users)</a></li>
+	</ul>
+	<p>Optional packages:</p>
+	<ul>
 		<li><a href="http://matplotlib.sourceforge.net/" target="_blank" title="Matplotlib library">Matplotlib library</a></li>
+		<li><a href="http://lxml.de/" target="_blank" title="Lxml library">Lxml library</a></li>
+		<li><a href="http://www.mplayerhq.hu/design7/dload.html" target="_blank" title="MenCoder library">MenCoder library</a></li>
 	</ul>
 </div>
 
@@ -54,7 +61,7 @@ title: Installation
 
 <h3>archNE Requirements</h3>
 <div class="description_2">
-    <p>In order to successfully compile and use arch Network Editor, the following software has to be installed in your system:</p>
+    <p>In order to successfully compile arch Network Editor, the following software has to be installed in your system:</p>
 	<ul>
 		<li><a href="http://qt.nokia.com/downloads/downloads#qt-lib" title="Qt libraries">Qt libraries(4.x)</a></li>
 	</ul>
@@ -84,8 +91,8 @@ title: Installation
 	</li>
 	<li><p>Run qmake with the right option to set the corresponding platform-specific variable:</p>
 	<p><strong>MacOsX:</strong><i> qmake -spec macx-g++ ../archNE</i></p>
-	<p><strong>Windows:</strong><i> qmake -spec win32 ../archNE</i></p>
-	<p><strong>Linux:</strong><i> qmake -spec unix ../archNE</i></p>
+	<p><strong>Windows:</strong><i> qmake -spec win32-g++ ../archNE</i></p>
+	<p><strong>Linux:</strong><i> qmake -spec unix-g++ ../archNE</i></p>
 	</li>
 	<div class="attachment_container">
 		<a href="media/archNE_pref.png" rel="lightbox" title="archNE set Preferences"><img class="screenshot" width="150" src="media/archNE_pref.png" alt="archNE set Preferences"/></a>
